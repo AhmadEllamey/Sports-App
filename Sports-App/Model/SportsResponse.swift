@@ -1,5 +1,5 @@
 //
-//  RepoProtocol.swift
+//  SportsResponse.swift
 //  Sports-App
 //
 //  Created by Ahmad Ellamey on 5/13/22.
@@ -9,8 +9,8 @@
 import Foundation
 
 
-protocol RepoProtocol {
+struct SportsResponse : Codable {
     
+    var sports : [Sports]
     
-    func getApiAnswer(link : String , param : [String : String]? , complitionHandler: @escaping (Any?, Error?) -> Void )
 }

@@ -19,7 +19,23 @@ class SportsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
+        let myPresenter : SportsProtocol?
+        myPresenter = SportsPresenter(viewRef:self , repoRef : Repo.getRepoInstance(netowrk: NetworkService.networkServiceIntanace))
+        myPresenter?.getSports(link: "all_sports.php", params: nil)
+        
         // Do any additional setup after loading the view.
+        
+        
+        //NetworkService.networkServiceIntanace.getResultFromAPI(link: "all_sports.php", params: nil , type: Sports ){ (sports, error) in
+        //guard let sports = sports else{
+             
+        //    return
+        //}
+        
+        
+        
     }
     
 
@@ -33,4 +49,14 @@ class SportsViewController: UIViewController {
     }
     */
 
+}
+
+extension SportsViewController : SportsViewProtocol{
+    
+    
+    
+    
+    
+    
+    
 }

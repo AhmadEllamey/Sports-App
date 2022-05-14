@@ -1,5 +1,5 @@
 //
-//  RepoProtocol.swift
+//  SportsProtocol.swift
 //  Sports-App
 //
 //  Created by Ahmad Ellamey on 5/13/22.
@@ -9,8 +9,12 @@
 import Foundation
 
 
-protocol RepoProtocol {
+
+protocol SportsProtocol {
     
     
-    func getApiAnswer(link : String , param : [String : String]? , complitionHandler: @escaping (Any?, Error?) -> Void )
+    func getSports(link : String , params : [String : String]? )
+    
+    
+    
 }
