@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xXS-QJ-CzW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nyB-yK-I8O">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -92,7 +92,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ilh-5Z-SUZ">
-                                <rect key="frame" x="10" y="98" width="394" height="705"/>
+                                <rect key="frame" x="10" y="143" width="394" height="660"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="98" id="m9U-pu-pZX" customClass="LeaguesCellController" customModule="Sports_App" customModuleProvider="target">
@@ -122,17 +122,30 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Country" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dz7-3B-hpK">
+                                <rect key="frame" x="10" y="101" width="394" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ilh-5Z-SUZ" firstAttribute="leading" secondItem="wix-sM-S7Z" secondAttribute="leading" constant="10" id="9kt-iQ-aLj"/>
-                            <constraint firstItem="wix-sM-S7Z" firstAttribute="trailing" secondItem="ilh-5Z-SUZ" secondAttribute="trailing" constant="10" id="NDL-Md-Q85"/>
-                            <constraint firstItem="wix-sM-S7Z" firstAttribute="bottom" secondItem="ilh-5Z-SUZ" secondAttribute="bottom" constant="10" id="sdl-Bl-5aS"/>
-                            <constraint firstItem="ilh-5Z-SUZ" firstAttribute="top" secondItem="wix-sM-S7Z" secondAttribute="top" constant="10" id="zrN-0y-4yB"/>
+                            <constraint firstItem="wix-sM-S7Z" firstAttribute="trailing" secondItem="ilh-5Z-SUZ" secondAttribute="trailing" constant="10" id="5HA-wY-fA6"/>
+                            <constraint firstItem="Dz7-3B-hpK" firstAttribute="leading" secondItem="wix-sM-S7Z" secondAttribute="leading" constant="10" id="EpT-bZ-tvp"/>
+                            <constraint firstItem="ilh-5Z-SUZ" firstAttribute="leading" secondItem="wix-sM-S7Z" secondAttribute="leading" constant="10" id="UiI-mQ-zRn"/>
+                            <constraint firstItem="Dz7-3B-hpK" firstAttribute="top" secondItem="wix-sM-S7Z" secondAttribute="top" constant="13" id="dFG-TG-QJB"/>
+                            <constraint firstItem="wix-sM-S7Z" firstAttribute="bottom" secondItem="ilh-5Z-SUZ" secondAttribute="bottom" constant="10" id="geo-QZ-jSy"/>
+                            <constraint firstItem="ilh-5Z-SUZ" firstAttribute="top" secondItem="Dz7-3B-hpK" secondAttribute="bottom" constant="8" id="rtS-g0-zz1"/>
+                            <constraint firstItem="wix-sM-S7Z" firstAttribute="trailing" secondItem="Dz7-3B-hpK" secondAttribute="trailing" constant="10" id="taw-pK-ToI"/>
+                            <constraint firstItem="Dz7-3B-hpK" firstAttribute="centerX" secondItem="6ci-3g-Fxa" secondAttribute="centerX" id="xpN-Cq-Evo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wix-sM-S7Z"/>
                     </view>
                     <navigationItem key="navigationItem" title="Leagues" id="MgI-VY-m1m"/>
+                    <connections>
+                        <outlet property="countryTextField" destination="Dz7-3B-hpK" id="XZM-ds-hFZ"/>
+                        <outlet property="myLeagueTable" destination="ilh-5Z-SUZ" id="u2J-nj-ks4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZ0-Tn-RPM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
