@@ -37,6 +37,7 @@ class SportsPresenter: SportsProtocol {
                  decoder.keyDecodingStrategy = .convertFromSnakeCase
                  let decodedT = try decoder.decode(SportsResponse.self, from: json)
                  print(decodedT.sports[0].idSport)
+                self.viewRef?.refreshSports(list: decodedT.sports)
              }catch{
                  print(error)
              }
