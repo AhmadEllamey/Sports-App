@@ -7,10 +7,8 @@
 //
 
 import Foundation
-
-
+ 
 class Repo: RepoProtocol {
-    
     
     private static var repoInstanace : Repo?
     
@@ -34,7 +32,4 @@ class Repo: RepoProtocol {
         }
     }
      
- 
- 
-    
 }

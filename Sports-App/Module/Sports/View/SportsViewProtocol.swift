@@ -13,8 +13,7 @@ import Foundation
 protocol SportsViewProtocol {
     
     
-    
-    
+    func refreshSports(list : [Sports])
     
     
     
