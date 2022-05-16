@@ -8,15 +8,14 @@
 
 import Foundation
 
-class Sports:Codable{
+struct Sports:Codable{
     let idSport, strSport: String
     let strFormat: String
     let strSportThumb: String
     let strSportIconGreen: String
     let strSportDescription: String
-     
     
-    init(idSport:String,strSport:String,strFormat:String,strSportThumb:String,strSportIconGreen:String,strSportDescription:String) {
+  /* init(idSport:String,strSport:String,strFormat:String,strSportThumb:String,strSportIconGreen:String,strSportDescription:String) {
         self.idSport = idSport
         self.strSport = strSport
         self.strFormat = strFormat
@@ -35,6 +34,6 @@ class Sports:Codable{
         strSportThumb = try values.decode(String.self, forKey: .strSportThumb)
         strSportIconGreen = try values.decode(String.self, forKey: .strSportIconGreen)
         strSportDescription = try values.decode(String.self, forKey: .strSportDescription)
-    }
+    }*/
 }
 

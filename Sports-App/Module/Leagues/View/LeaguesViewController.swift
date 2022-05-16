@@ -21,6 +21,8 @@ class LeaguesViewController: UIViewController {
     var countries: [CountriesName] = []
     var leagues: [LeaguesData] = []
     
+    var sport:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -123,7 +125,7 @@ extension LeaguesViewController : UIPickerViewDelegate, UIPickerViewDataSource{
         
         indicator.startAnimating()
         
-        myPresenter?.getLeaguesOfSportInCountry(link: "search_all_leagues.php", params: ["c":countryTextField.text ?? "" , "s":"Soccer"])
+        myPresenter?.getLeaguesOfSportInCountry(link: "search_all_leagues.php", params: ["c":countryTextField.text ?? "" , "s":sport!])
         
         leagues = []
         myLeagueTable.reloadData()

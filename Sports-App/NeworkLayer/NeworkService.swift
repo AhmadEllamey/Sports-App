@@ -11,17 +11,9 @@ import Alamofire
 
 
 class NetworkService : NetworkProtocol  {
-     
-    
     static var networkServiceIntanace = NetworkService()
     
     private init(){}
-    
-    
-    
-    
-    //AF.request("https://httpbin.org/get", parameters: parameters)
-    
     
     func getResultFromAPI(link : String , params : [String : String]? ,complitionHandler: @escaping (Any?, Error?) -> Void){
         
@@ -63,9 +55,6 @@ class NetworkService : NetworkProtocol  {
            
        }
  */
-    
-     
-    
 }
 
 

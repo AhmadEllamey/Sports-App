@@ -9,7 +9,6 @@
 import Foundation
  
 class Repo: RepoProtocol {
-    
     private static var repoInstanace : Repo?
     
     private var networkService : NetworkProtocol?

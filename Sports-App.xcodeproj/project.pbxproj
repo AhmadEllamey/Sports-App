@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2491B91E28301C3800D01FAC /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2491B91D28301C3800D01FAC /* Data.swift */; };
 		2491B920283023EE00D01FAC /* LeaguePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2491B91F283023EE00D01FAC /* LeaguePresenterProtocol.swift */; };
 		2491B9222830240400D01FAC /* LeagueViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2491B9212830240400D01FAC /* LeagueViewProtocol.swift */; };
 		2491B9242830283A00D01FAC /* LeaguesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2491B9232830283A00D01FAC /* LeaguesResponse.swift */; };
@@ -70,7 +69,6 @@
 
 /* Begin PBXFileReference section */
 		20B763A5268D9ECB7EB00715 /* Pods-Sports-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sports-App.debug.xcconfig"; path = "Target Support Files/Pods-Sports-App/Pods-Sports-App.debug.xcconfig"; sourceTree = "<group>"; };
-		2491B91D28301C3800D01FAC /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		2491B91F283023EE00D01FAC /* LeaguePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguePresenterProtocol.swift; sourceTree = "<group>"; };
 		2491B9212830240400D01FAC /* LeagueViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueViewProtocol.swift; sourceTree = "<group>"; };
 		2491B9232830283A00D01FAC /* LeaguesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesResponse.swift; sourceTree = "<group>"; };
@@ -249,7 +247,6 @@
 				EFF2E446282F3AC0002DFE0F /* Repo.swift */,
 				EFF2E44F282F3F78002DFE0F /* RepoProtocol.swift */,
 				EFF2E451282F6542002DFE0F /* SportsResponse.swift */,
-				2491B91D28301C3800D01FAC /* Data.swift */,
 				2491B9232830283A00D01FAC /* LeaguesResponse.swift */,
 				2491B9252830287D00D01FAC /* LeaguesData.swift */,
 				2491B927283030C200D01FAC /* CountriesName.swift */,
@@ -654,7 +651,6 @@
 				2491B9262830287D00D01FAC /* LeaguesData.swift in Sources */,
 				EFC72A55282C65A400884680 /* AppDelegate.swift in Sources */,
 				EFD5540F282D634400AC82C9 /* SportsViewController.swift in Sources */,
-				2491B91E28301C3800D01FAC /* Data.swift in Sources */,
 				EFF2E444282F2F9C002DFE0F /* Sports.swift in Sources */,
 				EFF2E44E282F3CBE002DFE0F /* NetworkProtocol.swift in Sources */,
 				EFF2E44A282F3B5F002DFE0F /* CoreDataService.swift in Sources */,

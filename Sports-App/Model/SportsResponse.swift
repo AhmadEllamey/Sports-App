@@ -10,7 +10,5 @@ import Foundation
 
 
 struct SportsResponse : Codable {
-    
     var sports : [Sports]
-    
 }

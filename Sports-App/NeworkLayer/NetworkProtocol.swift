@@ -10,11 +10,5 @@ import Foundation
 
 
 protocol NetworkProtocol {
-    
-    
-    
     func getResultFromAPI(link : String , params : [String : String]? ,complitionHandler: @escaping (Any?, Error?) -> Void)
-    
-    
-    
 }

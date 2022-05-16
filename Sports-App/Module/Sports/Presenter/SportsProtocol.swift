@@ -11,10 +11,5 @@ import Foundation
 
 
 protocol SportsProtocol {
-    
-    
     func getSports(link : String , params : [String : String]? )
-    
-    
-    
 }

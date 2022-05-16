@@ -10,7 +10,5 @@ import Foundation
 
 
 protocol RepoProtocol {
-    
-    
     func getApiAnswer(link : String , param : [String : String]? , complitionHandler: @escaping (Any?, Error?) -> Void )
 }
