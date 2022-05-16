@@ -9,5 +9,5 @@
 import Foundation
 
 struct LeaguesResponse : Codable{
-    let countries : [Countries]?
+    let countries : [LeaguesData]?
 }

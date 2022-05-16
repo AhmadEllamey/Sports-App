@@ -22,23 +22,25 @@ class LeaguesPresenter : LeaguePresenterProtocol{
     func getAllCountries(link: String, params: [String : String]?) {
         repo?.getApiAnswer(link: link, param: params){ (countries, error) in
             guard let countries = countries else{
-                    print("countries")
-                    return
-                  }
+                print("countries")
+                return
+            }
             
             do{
-                 let json = try JSONSerialization.data(withJSONObject: countries)
-                 let decoder = JSONDecoder()
-                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                 let decodedT = try decoder.decode(CountriesNameResponse.self, from: json)
-                for i in 0...decodedT.countries!.count-1{
-                    print((decodedT.countries?[i].nameEn)!)
-                }
-                //print(decodedT)
+                let json = try JSONSerialization.data(withJSONObject: countries)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let decodedT = try decoder.decode(CountriesNameResponse.self, from: json)
                 
-             }catch{
-                 print(error)
-             }
+                guard let countriesData = decodedT.countries else {
+                    return
+                }
+                
+                self.leagueView?.updateCountryPickerView(countries: countriesData)
+                
+            }catch{
+                print(error)
+            }
         }
     }
     
@@ -46,18 +48,23 @@ class LeaguesPresenter : LeaguePresenterProtocol{
         repo?.getApiAnswer(link: link, param: params){ (leagues, error) in
             
             guard let leagues = leagues else{
-                    print("leagues")
-                    return
-                  }
+                print("leagues")
+                return
+            }
             do{
-                 let json = try JSONSerialization.data(withJSONObject: leagues)
-                 let decoder = JSONDecoder()
-                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                 let decodedT = try decoder.decode(LeaguesResponse.self, from: json)
-                print(decodedT.countries?[0])
-             }catch{
-                 print(error)
-             }
+                let json = try JSONSerialization.data(withJSONObject: leagues)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let decodedT = try decoder.decode(LeaguesResponse.self, from: json)
+                
+                guard let leaguesData = decodedT.countries else {
+                    return
+                }
+                
+                self.leagueView?.updateLeaguesTableView(leagues: leaguesData)
+            }catch{
+                print("Hi :\(error)")
+            }
         }
     }
     

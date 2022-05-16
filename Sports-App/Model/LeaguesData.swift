@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Countries : Codable{
+struct LeaguesData : Codable{
     let idLeague : String?
     let idSoccerXML : String?
     let idAPIfootball : String?

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class LeaguesViewController: UIViewController {
     @IBOutlet weak var countryTextField: UITextField!
@@ -17,6 +18,9 @@ class LeaguesViewController: UIViewController {
     
     var myPresenter : LeaguePresenterProtocol?
     
+    var countries: [CountriesName] = []
+    var leagues: [LeaguesData] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,16 +29,19 @@ class LeaguesViewController: UIViewController {
         
         pickerView.delegate = self
         pickerView.dataSource = self
+        myLeagueTable.delegate = self
+        myLeagueTable.dataSource = self
         
         countryTextField.inputView = pickerView
         
         myLeagueTable.isHidden = true
+        myLeagueTable.separatorStyle = .none
+        myLeagueTable.showsVerticalScrollIndicator = false
         
         myPresenter = LeaguesPresenter(leagueView:self ,repo: Repo.getRepoInstance(netowrk: NetworkService.networkServiceIntanace))
         
         myPresenter?.getAllCountries(link: "all_countries.php", params: nil)
     }
-    
     
     /*
      // MARK: - Navigation
@@ -51,19 +58,48 @@ class LeaguesViewController: UIViewController {
 extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0;
+        return leagues.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myLeagueTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeaguesCellController
         
-//        cell.myImageView.image = UIImage(named: "apple.png")
-//        cell.myTitleView.text = list[indexPath.row].title
-//        cell.myGenreView.text = list[indexPath.row].genre
+        cell.leagueImage.kf.setImage(with: URL(string : leagues[indexPath.row].strBadge ?? ""), placeholder: UIImage(named:"apple.png"))
+        cell.leagueName.text = leagues[indexPath.row].strLeague
+        
+        if leagues[indexPath.row].strYoutube == ""{
+            cell.setVisibilityToFalse()
+        }
+        
+        cell.youtubeTapClosure = { [weak self] in
+            guard let self = self else{
+                return
+            }
+            
+            let youtubeURL = NSURL(string: "https://www."+self.leagues[indexPath.row].strYoutube!)
+            
+            print(youtubeURL)
+            print(self.leagues[indexPath.row].strYoutube!)
+            
+            if UIApplication.shared.canOpenURL(youtubeURL as! URL){
+                UIApplication.shared.open((youtubeURL as? URL)!)
+            }
+            
+        }
+        
+        cell.cellView.layer.cornerRadius = cell.cellView.frame.height/3
+        cell.leagueImage.layer.cornerRadius = cell.leagueImage.frame.height/2
+        cell.leagueImage.layer.borderWidth = 1
+        cell.leagueImage.layer.masksToBounds = false
+        cell.leagueImage.layer.borderColor = UIColor.black.cgColor
+        cell.leagueImage.clipsToBounds = true
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
     
 }
 
@@ -74,24 +110,38 @@ extension LeaguesViewController : UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Data.countries.count
+        return countries.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return Data.countries[row]
+        return countries[row].nameEn
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        countryTextField.text = Data.countries[row]
+        countryTextField.text = countries[row].nameEn
         countryTextField.resignFirstResponder()
         
         indicator.startAnimating()
         
         myPresenter?.getLeaguesOfSportInCountry(link: "search_all_leagues.php", params: ["c":countryTextField.text ?? "" , "s":"Soccer"])
+        
+        leagues = []
+        myLeagueTable.reloadData()
+        myLeagueTable.isHidden = true
     }
 
 }
 
 extension LeaguesViewController : LeagueViewProtocol{
+    func updateLeaguesTableView(leagues: [LeaguesData]) {
+        indicator.stopAnimating()
+        self.leagues = leagues
+        myLeagueTable.isHidden = false
+        myLeagueTable.reloadData()
+    }
     
+    func updateCountryPickerView(countries: [CountriesName]) {
+        self.countries = countries
+        pickerView.reloadAllComponents()
+    }
 }
