@@ -28,4 +28,8 @@ class LeaguesCellController: UITableViewCell {
     func setVisibilityToFalse(){
         youtubeBtOutlet.isHidden = true
     }
+    
+    func setVisibilityToTrue(){
+        youtubeBtOutlet.isHidden = false
+    }
 }
