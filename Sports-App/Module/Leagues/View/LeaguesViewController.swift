@@ -68,7 +68,7 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
         
         cell.leagueImage.kf.setImage(with: URL(string : leagues[indexPath.row].strBadge ?? ""), placeholder: UIImage(named:"apple.png"))
         cell.leagueName.text = leagues[indexPath.row].strLeague
-        
+        print("------->"+leagues[indexPath.row].strYoutube!)
         if leagues[indexPath.row].strYoutube == ""{
             cell.setVisibilityToFalse()
         }
@@ -78,10 +78,10 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
                 return
             }
             
-            let youtubeURL = NSURL(string: "https://www."+self.leagues[indexPath.row].strYoutube!)
+            let youtubeURL = NSURL(string:"https://"+self.leagues[indexPath.row].strYoutube!)
             
-            print(youtubeURL)
-            print(self.leagues[indexPath.row].strYoutube!)
+            //print(youtubeURL)
+            //print(self.leagues[indexPath.row].strYoutube!)
             
             if UIApplication.shared.canOpenURL(youtubeURL as! URL){
                 UIApplication.shared.open((youtubeURL as? URL)!)
