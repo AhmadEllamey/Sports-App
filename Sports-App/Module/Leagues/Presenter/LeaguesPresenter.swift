@@ -46,7 +46,6 @@ class LeaguesPresenter : LeaguePresenterProtocol{
     
     func getLeaguesOfSportInCountry(link: String, params: [String : String]?) {
         repo?.getApiAnswer(link: link, param: params){ (leagues, error) in
-            
             guard let leagues = leagues else{
                 print("leagues")
                 return
@@ -58,6 +57,7 @@ class LeaguesPresenter : LeaguePresenterProtocol{
                 let decodedT = try decoder.decode(LeaguesResponse.self, from: json)
                 
                 guard let leaguesData = decodedT.countries else {
+                    self.leagueView?.notifyError()
                     return
                 }
                 

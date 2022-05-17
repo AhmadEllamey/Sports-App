@@ -11,4 +11,8 @@ import Foundation
 
 protocol RepoProtocol {
     func getApiAnswer(link : String , param : [String : String]? , complitionHandler: @escaping (Any?, Error?) -> Void )
+    
+    func getAllFavLeagueFromCoreData() -> [FavouriteLeague]
+    func insertFavLeagueToCoreData(league: FavouriteLeague) -> Int
+    func deleteFavLeagueFromCoreData(league: FavouriteLeague) -> Int
 }

@@ -27,7 +27,7 @@ class SportsViewController: UIViewController {
         if Reachability.isConnectedToNetwork(){
             // request the list of sports
             let myPresenter : SportsProtocol?
-            myPresenter = SportsPresenter(viewRef:self , repoRef : Repo.getRepoInstance(netowrk: NetworkService.networkServiceIntanace))
+            myPresenter = SportsPresenter(viewRef:self , repoRef : Repo.getRepoInstance(netowrk: NetworkService.networkServiceIntanace, coreData: CoreDataService.coreDataServiceIntanace))
             myPresenter?.getSports(link: "all_sports.php", params: nil)
         }
     }
@@ -55,7 +55,7 @@ extension SportsViewController  : UICollectionViewDelegateFlowLayout ,UICollecti
         print("tap working")
         // request the list of sports
         let myPresenter : SportsProtocol?
-        myPresenter = SportsPresenter(viewRef:self , repoRef : Repo.getRepoInstance(netowrk: NetworkService.networkServiceIntanace))
+        myPresenter = SportsPresenter(viewRef:self , repoRef : Repo.getRepoInstance(netowrk: NetworkService.networkServiceIntanace, coreData: CoreDataService.coreDataServiceIntanace))
         myPresenter?.getSports(link: "all_sports.php", params: nil)
     }
     

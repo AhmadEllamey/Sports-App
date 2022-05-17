@@ -35,12 +35,13 @@ class LeaguesViewController: UIViewController {
         myLeagueTable.dataSource = self
         
         countryTextField.inputView = pickerView
+        countryTextField.isEnabled = false
         
         myLeagueTable.isHidden = true
         myLeagueTable.separatorStyle = .none
         myLeagueTable.showsVerticalScrollIndicator = false
         
-        myPresenter = LeaguesPresenter(leagueView:self ,repo: Repo.getRepoInstance(netowrk: NetworkService.networkServiceIntanace))
+        myPresenter = LeaguesPresenter(leagueView:self ,repo: Repo.getRepoInstance(netowrk: NetworkService.networkServiceIntanace, coreData: CoreDataService.coreDataServiceIntanace))
         
         myPresenter?.getAllCountries(link: "all_countries.php", params: nil)
     }
@@ -137,6 +138,11 @@ extension LeaguesViewController : UIPickerViewDelegate, UIPickerViewDataSource{
 }
 
 extension LeaguesViewController : LeagueViewProtocol{
+    func notifyError() {
+        indicator.stopAnimating()
+        myLeagueTable.isHidden = true
+    }
+    
     func updateLeaguesTableView(leagues: [LeaguesData]) {
         indicator.stopAnimating()
         self.leagues = leagues
@@ -145,6 +151,7 @@ extension LeaguesViewController : LeagueViewProtocol{
     }
     
     func updateCountryPickerView(countries: [CountriesName]) {
+        countryTextField.isEnabled = true
         self.countries = countries
         pickerView.reloadAllComponents()
     }

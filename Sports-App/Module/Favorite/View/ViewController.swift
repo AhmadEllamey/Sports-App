@@ -20,3 +20,6 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: FavouriteViewProtocol{
+    
+}
