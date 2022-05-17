@@ -10,5 +10,7 @@ import Foundation
 
 
 protocol CoreDataProtocol {
-    
+    func insertLeagueToCoreData(league : FavouriteLeague) -> Int
+    func getAllFavLeagueFromCoreData() -> [FavouriteLeague]
+    func deleteFavLeagueFromCoreData(league: FavouriteLeague) -> Int
 }

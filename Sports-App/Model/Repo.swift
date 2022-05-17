@@ -11,15 +11,17 @@ import Foundation
 class Repo: RepoProtocol {
     private static var repoInstanace : Repo?
     
-    private var networkService : NetworkProtocol?
+    private var networkService: NetworkProtocol?
+    private var coreDataService: CoreDataProtocol?
     
-    private init(network : NetworkProtocol){
+    private init(network : NetworkProtocol, coreData: CoreDataProtocol){
         networkService = network
+        coreDataService = coreData
     }
     
-    static func getRepoInstance(netowrk : NetworkProtocol) -> Repo {
+    static func getRepoInstance(netowrk : NetworkProtocol, coreData: CoreDataProtocol) -> Repo {
         if repoInstanace == nil{
-            repoInstanace = Repo(network: netowrk)
+            repoInstanace = Repo(network: netowrk, coreData: coreData)
         }
         
         return repoInstanace!
@@ -29,6 +31,18 @@ class Repo: RepoProtocol {
         networkService?.getResultFromAPI(link: link, params: param ){ (sports , error) in
             complitionHandler(sports,error)
         }
+    }
+    
+    func getAllFavLeagueFromCoreData() -> [FavouriteLeague]{
+        return (coreDataService?.getAllFavLeagueFromCoreData())!
+    }
+    
+    func insertFavLeagueToCoreData(league: FavouriteLeague) -> Int{
+        return coreDataService?.insertLeagueToCoreData(league: league) ?? 0
+    }
+    
+    func deleteFavLeagueFromCoreData(league: FavouriteLeague) -> Int{
+        return coreDataService?.deleteFavLeagueFromCoreData(league: league) ?? 0
     }
      
 }

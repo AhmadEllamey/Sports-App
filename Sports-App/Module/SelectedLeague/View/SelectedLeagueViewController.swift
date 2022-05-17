@@ -28,3 +28,7 @@ class SelectedLeagueViewController: UIViewController {
     */
 
 }
+
+extension SelectedLeagueViewController: SelectedLeagueViewProtocol{
+    
+}

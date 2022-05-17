@@ -11,4 +11,5 @@ import Foundation
 protocol LeagueViewProtocol {
     func updateLeaguesTableView(leagues: [LeaguesData])
     func updateCountryPickerView(countries: [CountriesName])
+    func notifyError()
 }
