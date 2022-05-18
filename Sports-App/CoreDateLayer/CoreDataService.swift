@@ -32,6 +32,7 @@ class CoreDataService: CoreDataProtocol {
             leagueData.setValue(league.name, forKey: "name")
             leagueData.setValue(imagetStrBase64, forKey: "image")
             leagueData.setValue(league.ytLink, forKey: "ytLink")
+            leagueData.setValue(league.id, forKey: "id")
             
             do{
                 try managedObjectContext.save()
@@ -56,10 +57,11 @@ class CoreDataService: CoreDataProtocol {
                 let name = returnedArray[i].value(forKey: "name") as? String
                 let image = returnedArray[i].value(forKey: "image") as? String
                 let ytLink = returnedArray[i].value(forKey: "ytLink") as? String
+                let id = returnedArray[i].value(forKey: "id") as? String
                 
                 let imageData = NSData(base64Encoded: image!)
                 
-                let obj = FavouriteLeague(image: imageData!, name: name!, ytLink: ytLink!)
+                let obj = FavouriteLeague(image: imageData!, name: name!, ytLink: ytLink!, id: id!)
                 
                 favList.append(obj)
             }
@@ -101,11 +103,12 @@ class CoreDataService: CoreDataProtocol {
                 let name = returnedArray[i].value(forKey: "name") as? String
                 let image = returnedArray[i].value(forKey: "image") as? String
                 let ytLink = returnedArray[i].value(forKey: "ytLink") as? String
+                let id = returnedArray[i].value(forKey: "id") as? String
                 
                 let imageData = NSData(base64Encoded: image!, options: .ignoreUnknownCharacters)
                 
                 
-                if name == league.name{
+                if id == league.id{
                     return returnedArray[i]
                 }
             }

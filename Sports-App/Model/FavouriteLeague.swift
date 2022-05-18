@@ -12,4 +12,5 @@ struct FavouriteLeague{
     let image: NSData
     let name: String
     let ytLink: String
+    let id: String
 }

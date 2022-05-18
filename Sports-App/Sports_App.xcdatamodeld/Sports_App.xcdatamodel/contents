@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="League" representedClassName="League" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="ytLink" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="League" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="League" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>
 </model>
