@@ -82,6 +82,15 @@ class CoreDataService: CoreDataProtocol {
         return 1
     }
     
+    func checkForFavLeagueInCoreData(league: FavouriteLeague) -> Int{
+        let obj = searchByObject(league: league)
+        guard obj != nil else{
+            return 0
+        }
+        
+        return 1
+    }
+    
     func searchByObject(league: FavouriteLeague) -> NSManagedObject? {
         let data = NSFetchRequest<NSManagedObject>(entityName: "League")
         
@@ -93,7 +102,7 @@ class CoreDataService: CoreDataProtocol {
                 let image = returnedArray[i].value(forKey: "image") as? String
                 let ytLink = returnedArray[i].value(forKey: "ytLink") as? String
                 
-                let imageData = NSData(base64Encoded: image!)
+                let imageData = NSData(base64Encoded: image!, options: .ignoreUnknownCharacters)
                 
                 
                 if name == league.name{
