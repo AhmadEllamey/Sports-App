@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 import UIKit
- 
+
 
 class CoreDataService: CoreDataProtocol {
     var managedObjectContext : NSManagedObjectContext!
@@ -24,28 +24,29 @@ class CoreDataService: CoreDataProtocol {
     
     func insertLeagueToCoreData(league : FavouriteLeague) -> Int{
         let entity = NSEntityDescription.entity(forEntityName: "League", in: managedObjectContext)
-            
-            let leagueData = NSManagedObject(entity: entity!, insertInto: managedObjectContext)
         
-            let imagetStrBase64 = league.image.base64EncodedString(options: .lineLength64Characters)
+        let leagueData = NSManagedObject(entity: entity!, insertInto: managedObjectContext)
         
-            leagueData.setValue(league.name, forKey: "name")
-            leagueData.setValue(imagetStrBase64, forKey: "image")
-            leagueData.setValue(league.ytLink, forKey: "ytLink")
-            leagueData.setValue(league.id, forKey: "id")
-            
-            do{
-                try managedObjectContext.save()
-                print("Insert Done")
-            }catch{
-                print(error.localizedDescription)
-                print("Insert Fail")
-                return 0
-            }
+        let imagetStrBase64 = league.image.base64EncodedString(options: .lineLength64Characters)
+        
+        leagueData.setValue(league.name, forKey: "name")
+        leagueData.setValue(imagetStrBase64, forKey: "image")
+        leagueData.setValue(league.ytLink, forKey: "ytLink")
+        leagueData.setValue(league.id, forKey: "id")
+        leagueData.setValue(league.imageUrl, forKey: "imageUrl")
+        
+        do{
+            try managedObjectContext.save()
+            print("Insert Done")
+        }catch{
+            print(error.localizedDescription)
+            print("Insert Fail")
+            return 0
+        }
         
         return 1
     }
-       
+    
     func getAllFavLeagueFromCoreData() -> [FavouriteLeague]{
         var favList : [FavouriteLeague] = []
         let data = NSFetchRequest<NSManagedObject>(entityName: "League")
@@ -58,10 +59,10 @@ class CoreDataService: CoreDataProtocol {
                 let image = returnedArray[i].value(forKey: "image") as? String
                 let ytLink = returnedArray[i].value(forKey: "ytLink") as? String
                 let id = returnedArray[i].value(forKey: "id") as? String
-                
+                let imageUrl = returnedArray[i].value(forKey: "imageUrl") as? String
                 let imageData = NSData(base64Encoded: image!)
                 
-                let obj = FavouriteLeague(image: imageData!, name: name!, ytLink: ytLink!, id: id!)
+                let obj = FavouriteLeague(image: imageData!, name: name!, ytLink: ytLink!, id: id!, imageUrl: imageUrl!)
                 
                 favList.append(obj)
             }
@@ -124,12 +125,12 @@ class CoreDataService: CoreDataProtocol {
 
 
 /*  //// 3nd l controller
-let imageData: NSData =  cell.leagueImage.image!.pngData() as! NSData
-
-
+ let imageData: NSData =  cell.leagueImage.image!.pngData() as! NSData
+ 
+ 
  
  // 3nd l controller
-cell.imageView?.image = UIImage(data: Data(base64Encoded: x, options: .ignoreUnknownCharacters)!)  ?? UIImage(named:"apple.png")
-
-print("Image Data: \(imageData)")
-*/
+ cell.imageView?.image = UIImage(data: Data(base64Encoded: x, options: .ignoreUnknownCharacters)!)  ?? UIImage(named:"apple.png")
+ 
+ print("Image Data: \(imageData)")
+ */

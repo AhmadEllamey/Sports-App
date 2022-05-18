@@ -25,6 +25,11 @@ class SelectedLeaguePresenter: SelectedLeaguePresenterProtocol{
     func deleteFavLeagueFromCoreData(league: FavouriteLeague){
         let result = repo?.deleteFavLeagueFromCoreData(league: league)
     }
+    
+    func checkForLeagueInCoreData(league: FavouriteLeague){
+        let result = repo?.checkForFavLeagueInCoreData(league: league)
+    }
+    
     func getLeagueEvents(link : String? , params : [String : String]? ){
         repo?.getApiAnswer(link: link!, param: params){ (leaguesEvents, error) in
             
@@ -43,6 +48,7 @@ class SelectedLeaguePresenter: SelectedLeaguePresenterProtocol{
         }
         
     }
+    
     func getLeagueTeams(link : String? , params : [String : String]? ){
         repo?.getApiAnswer(link: link!, param: params){ (teams, error) in
             

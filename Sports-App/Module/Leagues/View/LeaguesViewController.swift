@@ -111,11 +111,10 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        /*
-        leagueDetailsVC.leagueNameString = leagues[indexPath.row].idLeague
-        leagueDetailsVC.leagueImageUrl = leagues[indexPath.row].strBadge
-        leagueDetailsVC.leagueId = leagues[indexPath.row].strLeague
-        */
+        leagueDetailsVC?.leagueNameString = leagues[indexPath.row].idLeague
+        leagueDetailsVC?.leagueImageUrl = leagues[indexPath.row].strBadge
+        leagueDetailsVC?.leagueId = leagues[indexPath.row].strLeague
+        
     }
     
 }

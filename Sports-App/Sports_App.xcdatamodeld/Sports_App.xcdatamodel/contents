@@ -3,10 +3,11 @@
     <entity name="League" representedClassName="League" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="ytLink" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="League" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="League" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>
