@@ -11,4 +11,6 @@ import Foundation
 protocol SelectedLeaguePresenterProtocol {
     func insertFavLeagueToCoreData(league: FavouriteLeague)
     func deleteFavLeagueFromCoreData(league: FavouriteLeague)
+    func getLeagueEvents(link : String? , params : [String:String]?)
+    func getLeagueTeams(link : String? , params : [String:String]?)
 }

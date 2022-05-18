@@ -10,4 +10,13 @@ import UIKit
 
 class LatestResultsCellController: UICollectionViewCell {
     
+    @IBOutlet weak var team1Score: UILabel!
+    
+    @IBOutlet weak var team2Score: UILabel!
+    
+    @IBOutlet weak var eventDate: UILabel!
+    
+    @IBOutlet weak var eventTime: UILabel!
+    
+    
 }

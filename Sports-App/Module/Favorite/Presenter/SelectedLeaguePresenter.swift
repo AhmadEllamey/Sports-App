@@ -9,8 +9,8 @@
 import Foundation
 
 class SelectedLeaguePresenter: SelectedLeaguePresenterProtocol{
-    var selectedLeagueView : SelectedLeagueViewProtocol?
     
+    var selectedLeagueView : SelectedLeagueViewProtocol?
     var repo : RepoProtocol?
     
     init(selectedLeagueView: SelectedLeagueViewProtocol, repo: RepoProtocol) {
@@ -25,4 +25,42 @@ class SelectedLeaguePresenter: SelectedLeaguePresenterProtocol{
     func deleteFavLeagueFromCoreData(league: FavouriteLeague){
         let result = repo?.deleteFavLeagueFromCoreData(league: league)
     }
+    func getLeagueEvents(link : String? , params : [String : String]? ){
+        repo?.getApiAnswer(link: link!, param: params){ (leaguesEvents, error) in
+            
+            guard let leaguesEvents = leaguesEvents else{
+                return
+            }
+            do{ 
+                let json = try JSONSerialization.data(withJSONObject: leaguesEvents)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let decodedT = try decoder.decode(SportsEvents.self, from: json)
+                self.selectedLeagueView?.refreshEventsList(list: decodedT.events!)
+            }catch{
+                print(error)
+            }
+        }
+        
+    }
+    func getLeagueTeams(link : String? , params : [String : String]? ){
+        repo?.getApiAnswer(link: link!, param: params){ (teams, error) in
+            
+            guard let teams = teams else{
+                return
+            }
+            do{ 
+                let json = try JSONSerialization.data(withJSONObject: teams)
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let decodedT = try decoder.decode(Teams.self, from: json)
+                self.selectedLeagueView?.refreshTeamsList(list: decodedT.teams!)
+            }catch{
+                print(error)
+            }
+        }
+    }
+    
+    
+    
 }
