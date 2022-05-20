@@ -9,27 +9,27 @@
 import Foundation
 
 struct EventsDetails : Codable {
-    let idEvent: String
+    let idEvent: String?
     let idSoccerXML: String?
-    let idAPIfootball, strEvent, strEventAlternate, strFilename: String
-    let strSport, idLeague, strLeague, strSeason: String
-    let strDescriptionEN, strHomeTeam, strAwayTeam, intHomeScore: String
-    let intRound, intAwayScore: String
+    let idAPIfootball, strEvent, strEventAlternate, strFilename: String?
+    let strSport, idLeague, strLeague, strSeason: String?
+    let strDescriptionEN, strHomeTeam, strAwayTeam, intHomeScore: String?
+    let intRound, intAwayScore: String?
     let intSpectators: String?
-    let strOfficial: String
-    let strTimestamp: String
-    let dateEvent, dateEventLocal, strTime, strTimeLocal: String
+    let strOfficial: String?
+    let strTimestamp: String?
+    let dateEvent, dateEventLocal, strTime, strTimeLocal: String?
     let strTVStation: String?
-    let idHomeTeam, idAwayTeam: String
+    let idHomeTeam, idAwayTeam: String?
     let intScore, intScoreVotes: String?
-    let strResult, strVenue, strCountry, strCity: String
-    let strPoster, strSquare: String
+    let strResult, strVenue, strCountry, strCity: String?
+    let strPoster, strSquare: String?
     let strFanart: String?
-    let strThumb: String
-    let strBanner: String
+    let strThumb: String?
+    let strBanner: String?
     let strMap: String?
-    let strTweet1, strTweet2, strTweet3, strVideo: String
-    let strStatus, strPostponed, strLocked: String
+    let strTweet1, strTweet2, strTweet3, strVideo: String?
+    let strStatus, strPostponed, strLocked: String?
 }
 
  

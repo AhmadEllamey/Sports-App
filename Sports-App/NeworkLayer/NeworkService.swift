@@ -21,7 +21,7 @@ class NetworkService : NetworkProtocol  {
         
         Alamofire.request(url, method: .get , parameters: params).responseJSON{ (response) in
             if let data = response.result.value{
-                complitionHandler(data , nil)
+                complitionHandler(data , nil) 
             }
         }
     }

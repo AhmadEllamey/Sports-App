@@ -34,6 +34,7 @@ class SelectedLeaguePresenter: SelectedLeaguePresenterProtocol{
         repo?.getApiAnswer(link: link!, param: params){ (leaguesEvents, error) in
             
             guard let leaguesEvents = leaguesEvents else{
+                print("---------------")
                 return
             }
             do{ 
@@ -44,6 +45,7 @@ class SelectedLeaguePresenter: SelectedLeaguePresenterProtocol{
                 self.selectedLeagueView?.refreshEventsList(list: decodedT.events!)
             }catch{
                 print(error)
+                print("***************")
             }
         }
     }
