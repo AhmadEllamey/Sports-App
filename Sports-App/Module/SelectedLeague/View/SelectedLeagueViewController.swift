@@ -189,7 +189,7 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
             h = Double(CGFloat(collectionView.bounds.size.height))
         }else if collectionView == self.leagueLatestEvents{
             w = Double(CGFloat(collectionView.bounds.size.width))
-            h = Double(CGFloat(collectionView.bounds.size.height))/2
+            h = Double(CGFloat(collectionView.bounds.size.height))
         }
         
         return CGSize(width: w, height: h)
@@ -203,7 +203,7 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
             cell.eventName.text = leagueUpcomingEventsList[indexPath.row].strEvent
             cell.eventDate.text = leagueUpcomingEventsList[indexPath.row].dateEvent
             cell.eventTime.text = leagueUpcomingEventsList[indexPath.row].strTime
-            cell.layer.cornerRadius = 10.0
+            cell.layer.cornerRadius = 20.0
             //cell.backgroundColor = UIColor.purple
             cell.layer.borderColor = UIColor.black.cgColor
             cell.layer.masksToBounds = true
@@ -229,7 +229,7 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
             cell.eventDate.text  = leagueLatestEventsList[indexPath.row].dateEvent
             cell.eventTime.text  = leagueLatestEventsList[indexPath.row].strTime
             
-            cell.layer.cornerRadius = 10.0
+            cell.layer.cornerRadius = 20.0
             //cell.backgroundColor = UIColor.purple
             cell.layer.borderColor = UIColor.black.cgColor
             cell.layer.masksToBounds = true
