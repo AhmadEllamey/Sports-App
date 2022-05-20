@@ -13,4 +13,5 @@ protocol SelectedLeaguePresenterProtocol {
     func deleteFavLeagueFromCoreData(league: FavouriteLeague)
     func getLeagueEvents(link : String? , params : [String:String]?)
     func getLeagueTeams(link : String? , params : [String:String]?)
+    func checkForLeagueInCoreData(league: FavouriteLeague)
 }

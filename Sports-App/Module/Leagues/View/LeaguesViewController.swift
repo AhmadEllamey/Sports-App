@@ -54,9 +54,46 @@ class LeaguesViewController: UIViewController {
 
 extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return leagues.count;
+    
+    @objc func tapFunction(sender:UITapGestureRecognizer) {
+        print("tap working")
+        // request the list of sports
+         
     }
+    
+    func setEmptyMessage(_ message: String) {
+        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        messageLabel.text = message
+        messageLabel.textColor = .black
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = .center;
+        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
+        messageLabel.sizeToFit()
+        messageLabel.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(SportsViewController.tapFunction))
+        messageLabel.addGestureRecognizer(tap)
+        self.myLeagueTable.backgroundView = messageLabel;
+    }
+    
+    func restore() {
+        self.myLeagueTable.backgroundView = nil
+    }
+ 
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (self.leagues.count == 0) {
+            if !Reachability.isConnectedToNetwork(){
+                setEmptyMessage("No Internet Connection ... \n click to re-try")
+            }else {
+                setEmptyMessage("Loading Data ...")
+            }
+        } else {
+            restore()
+        }
+        return leagues.count
+    }
+    
+ 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myLeagueTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeaguesCellController
@@ -107,6 +144,8 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
         leagueDetailsVC?.leagueNameString = leagues[indexPath.row].strLeague
         leagueDetailsVC?.leagueImageUrl = leagues[indexPath.row].strBadge
         leagueDetailsVC?.leagueId = leagues[indexPath.row].idLeague
+        leagueDetailsVC?.yLink = leagues[indexPath.row].strYoutube
+        
         
         self.present(leagueDetailsVC!, animated: true, completion: nil)
         
@@ -115,6 +154,7 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
 }
 
 extension LeaguesViewController : UIPickerViewDelegate, UIPickerViewDataSource{
+     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -134,11 +174,13 @@ extension LeaguesViewController : UIPickerViewDelegate, UIPickerViewDataSource{
         
         indicator.startAnimating()
         
-        myPresenter?.getLeaguesOfSportInCountry(link: "search_all_leagues.php", params: ["c":countryTextField.text ?? "" , "s":sport!])
-        
-        leagues = []
-        myLeagueTable.reloadData()
-        myLeagueTable.isHidden = true
+        if Reachability.isConnectedToNetwork() {
+                myPresenter?.getLeaguesOfSportInCountry(link: "search_all_leagues.php", params: ["c":countryTextField.text ?? "" , "s":sport!])
+                
+                leagues = []
+                myLeagueTable.reloadData()
+                myLeagueTable.isHidden = true
+        }
     }
 
 }

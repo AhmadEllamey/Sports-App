@@ -28,6 +28,9 @@ class SelectedLeaguePresenter: SelectedLeaguePresenterProtocol{
     
     func checkForLeagueInCoreData(league: FavouriteLeague){
         let result = repo?.checkForFavLeagueInCoreData(league: league)
+        if result == 1 {
+            selectedLeagueView?.updateTheFavState()
+        }
     }
     
     func getLeagueEvents(link : String? , params : [String : String]? ){

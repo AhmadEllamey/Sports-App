@@ -27,7 +27,7 @@ class CoreDataService: CoreDataProtocol {
         
         let leagueData = NSManagedObject(entity: entity!, insertInto: managedObjectContext)
         
-        let imagetStrBase64 = league.image.base64EncodedString(options: .lineLength64Characters)
+        let imagetStrBase64 = league.image!.base64EncodedString(options: .lineLength64Characters)
         
         leagueData.setValue(league.name, forKey: "name")
         leagueData.setValue(imagetStrBase64, forKey: "image")
@@ -105,8 +105,7 @@ class CoreDataService: CoreDataProtocol {
                 let image = returnedArray[i].value(forKey: "image") as? String
                 let ytLink = returnedArray[i].value(forKey: "ytLink") as? String
                 let id = returnedArray[i].value(forKey: "id") as? String
-                
-                let imageData = NSData(base64Encoded: image!, options: .ignoreUnknownCharacters)
+                let imageData = NSData(base64Encoded: image ?? "", options: .ignoreUnknownCharacters)
                 
                 
                 if id == league.id{
