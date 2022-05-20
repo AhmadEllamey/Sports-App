@@ -286,6 +286,10 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
             //let teamDetailsVC = self.storyboard?.instantiateViewController(identifier: "TeamDetails") as! LeaguesViewController
             //teamDetailsVC.team = leagueTeamsList[indexPath.row]
             //self.present(teamDetailsVC, animated: true, completion: nil)
+            
+            let teamDetailsVC = self.storyboard?.instantiateViewController(identifier: "TeamDetails") as! TeamDetailsViewController
+            teamDetailsVC.team = leagueTeamsList[indexPath.row]
+            self.present(teamDetailsVC, animated: true, completion: nil)
         }
         
     }
