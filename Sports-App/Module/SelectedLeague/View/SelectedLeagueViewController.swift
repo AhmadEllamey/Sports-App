@@ -46,9 +46,9 @@ class SelectedLeagueViewController: UIViewController {
         leagueTeams.dataSource = self
         
         // for testing
-        leagueNameString = "English Premier League"
-        leagueId = "4328"
-        leagueImageUrl = "https://www.thesportsdb.com/images/media/team/badge/xtxwtu1448813356.png"
+        //leagueNameString = "English Premier League"
+        //leagueId = "4328"
+        //leagueImageUrl = "https://www.thesportsdb.com/images/media/team/badge/xtxwtu1448813356.png"
         // ----------------
         
         self.leagueName.text = leagueNameString
@@ -209,8 +209,13 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
             cell.layer.masksToBounds = true
             cell.layer.borderWidth = 2
             let thumbImage = UIImageView()
-            let myUrl = Foundation.URL.init(string: leagueUpcomingEventsList[indexPath.row].strThumb)
-            print(leagueUpcomingEventsList[indexPath.row].strThumb)
+            
+            var myUrl : URL?
+            if leagueUpcomingEventsList[indexPath.row].strThumb! != "" && leagueUpcomingEventsList[indexPath.row].strThumb! != nil {
+                myUrl = Foundation.URL.init(string: leagueUpcomingEventsList[indexPath.row].strThumb!)
+            }else{
+                myUrl = Foundation.URL.init(string:"https://global-uploads.webflow.com/5e157548d6f7910beea4e2d6/610898130d049c02ee7a09e2_logo_2f117a78-b765-4e72-a215-0809c4a74bd6.png")
+            }
             let resource = ImageResource(downloadURL: myUrl!)
             KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
                 switch result {
@@ -235,8 +240,12 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
             cell.layer.masksToBounds = true
             cell.layer.borderWidth = 2
             let thumbImage = UIImageView()
-            let myUrl = Foundation.URL.init(string: leagueLatestEventsList[indexPath.row].strThumb)
-            print(leagueUpcomingEventsList[indexPath.row].strThumb)
+            var myUrl : URL?
+            if leagueLatestEventsList[indexPath.row].strThumb! != "" && leagueLatestEventsList[indexPath.row].strThumb! != nil {
+                myUrl = Foundation.URL.init(string: leagueLatestEventsList[indexPath.row].strThumb!)
+            }else{
+                myUrl = Foundation.URL.init(string:"https://global-uploads.webflow.com/5e157548d6f7910beea4e2d6/610898130d049c02ee7a09e2_logo_2f117a78-b765-4e72-a215-0809c4a74bd6.png")
+            }
             let resource = ImageResource(downloadURL: myUrl!)
             KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
                 switch result {
@@ -272,10 +281,11 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == self.leagueTeams{
-            
             // switch to the team details
             print(leagueTeamsList[indexPath.row].strTeam!)
-            
+            //let teamDetailsVC = self.storyboard?.instantiateViewController(identifier: "TeamDetails") as! LeaguesViewController
+            //teamDetailsVC.team = leagueTeamsList[indexPath.row]
+            //self.present(teamDetailsVC, animated: true, completion: nil)
         }
         
     }

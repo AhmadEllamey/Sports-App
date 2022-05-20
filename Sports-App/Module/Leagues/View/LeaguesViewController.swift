@@ -48,16 +48,7 @@ class LeaguesViewController: UIViewController {
         myPresenter?.getAllCountries(link: "all_countries.php", params: nil)
     }
     
-    
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-        leagueDetailsVC = segue.destination as! SelectedLeagueViewController
-     }
-     
+ 
     
 }
 
@@ -111,9 +102,13 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        leagueDetailsVC?.leagueNameString = leagues[indexPath.row].idLeague
+        leagueDetailsVC = self.storyboard?.instantiateViewController(identifier: "LeagueDetails") as! SelectedLeagueViewController
+        
+        leagueDetailsVC?.leagueNameString = leagues[indexPath.row].strLeague
         leagueDetailsVC?.leagueImageUrl = leagues[indexPath.row].strBadge
-        leagueDetailsVC?.leagueId = leagues[indexPath.row].strLeague
+        leagueDetailsVC?.leagueId = leagues[indexPath.row].idLeague
+        
+        self.present(leagueDetailsVC!, animated: true, completion: nil)
         
     }
     
