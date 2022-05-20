@@ -23,6 +23,8 @@ class LeaguesViewController: UIViewController {
     
     var sport:String?
     
+    var leagueDetailsVC : SelectedLeagueViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,15 +48,16 @@ class LeaguesViewController: UIViewController {
         myPresenter?.getAllCountries(link: "all_countries.php", params: nil)
     }
     
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destination.
      // Pass the selected object to the new view controller.
+        leagueDetailsVC = segue.destination as! SelectedLeagueViewController
      }
-     */
+     
     
 }
 
@@ -104,6 +107,14 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        leagueDetailsVC?.leagueNameString = leagues[indexPath.row].idLeague
+        leagueDetailsVC?.leagueImageUrl = leagues[indexPath.row].strBadge
+        leagueDetailsVC?.leagueId = leagues[indexPath.row].strLeague
+        
     }
     
 }

@@ -15,4 +15,5 @@ protocol RepoProtocol {
     func getAllFavLeagueFromCoreData() -> [FavouriteLeague]
     func insertFavLeagueToCoreData(league: FavouriteLeague) -> Int
     func deleteFavLeagueFromCoreData(league: FavouriteLeague) -> Int
+    func checkForFavLeagueInCoreData(league: FavouriteLeague) -> Int
 }

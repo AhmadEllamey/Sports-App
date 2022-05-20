@@ -13,4 +13,5 @@ protocol CoreDataProtocol {
     func insertLeagueToCoreData(league : FavouriteLeague) -> Int
     func getAllFavLeagueFromCoreData() -> [FavouriteLeague]
     func deleteFavLeagueFromCoreData(league: FavouriteLeague) -> Int
+    func checkForFavLeagueInCoreData(league: FavouriteLeague) -> Int
 }

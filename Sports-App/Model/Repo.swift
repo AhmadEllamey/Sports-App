@@ -44,5 +44,9 @@ class Repo: RepoProtocol {
     func deleteFavLeagueFromCoreData(league: FavouriteLeague) -> Int{
         return coreDataService?.deleteFavLeagueFromCoreData(league: league) ?? 0
     }
+    
+    func checkForFavLeagueInCoreData(league: FavouriteLeague) -> Int{
+        return coreDataService?.checkForFavLeagueInCoreData(league: league) ?? 0
+    }
      
 }
