@@ -46,7 +46,6 @@ class SelectedLeaguePresenter: SelectedLeaguePresenterProtocol{
                 print(error)
             }
         }
-        
     }
     
     func getLeagueTeams(link : String? , params : [String : String]? ){
