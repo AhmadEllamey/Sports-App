@@ -24,6 +24,25 @@ class SelectedLeagueViewController: UIViewController {
     
     @IBOutlet weak var myScrollView: UIScrollView!
     
+    @IBOutlet weak var favButton: UIButton!
+    
+    @IBAction func favLeague(_ sender: Any) {
+        favButton.isSelected.toggle()
+        
+        if favButton.isSelected {
+            print("liked")
+            // set the object add to fav
+            let imageData: NSData =  leagueImage.image!.pngData() as! NSData
+            let currentLeague = FavouriteLeague(image: imageData, name: leagueNameString, ytLink: yLink, id: leagueId, imageUrl: leagueImageUrl)
+            myPresenter?.insertFavLeagueToCoreData(league: currentLeague)
+        }else{
+            print("disliked")
+            // set the object remove from fav
+            let imageData: NSData =  leagueImage.image!.pngData() as! NSData
+                       let currentLeague = FavouriteLeague(image: imageData, name: leagueNameString, ytLink: yLink, id: leagueId, imageUrl: leagueImageUrl)
+            myPresenter?.deleteFavLeagueFromCoreData(league: currentLeague)
+        }
+    }
     var leagueUpcomingEventsList = [EventsDetails]()
     var leagueLatestEventsList = [EventsDetails]()
     var leagueTeamsList = [TeamDetails]()
@@ -32,7 +51,10 @@ class SelectedLeagueViewController: UIViewController {
     var leagueNameString : String?
     var leagueId : String?
     var leagueImageUrl : String?
+    var yLink : String?
      
+    var myPresenter : SelectedLeaguePresenterProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,9 +77,17 @@ class SelectedLeagueViewController: UIViewController {
         
         if Reachability.isConnectedToNetwork(){
             // request the list of sports
-            let myPresenter : SelectedLeaguePresenterProtocol?
+            
             myPresenter = SelectedLeaguePresenter(selectedLeagueView:self , repo : Repo.getRepoInstance(netowrk: NetworkService.networkServiceIntanace, coreData: CoreDataService.coreDataServiceIntanace))
             // request the data
+            
+            
+            let image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
+            let imageFilled = UIImage(named: "full_heart")?.withRenderingMode(.alwaysTemplate)
+            //imageFilled?.withTintColor(.red)
+            favButton.setImage(image, for: .normal)
+            favButton.setImage(imageFilled, for: .selected)
+             
             
             // request the league image
             let myUrl = Foundation.URL.init(string: self.leagueImageUrl!)
@@ -71,11 +101,14 @@ class SelectedLeagueViewController: UIViewController {
                 }
             }
             
+            print(leagueId)
             // request the league events
             myPresenter?.getLeagueEvents(link: "eventsseason.php", params: ["id":self.leagueId!])
             // request the league teams
             myPresenter?.getLeagueTeams(link: "search_all_teams.php", params: ["l":self.leagueNameString!])
- 
+            // set the object and check for this in core data
+            let currentLeague = FavouriteLeague(image: nil, name: leagueNameString, ytLink: "", id: leagueId, imageUrl: "")
+            myPresenter?.checkForLeagueInCoreData(league: currentLeague)
         }
     }
 }
@@ -94,6 +127,11 @@ extension SelectedLeagueViewController: SelectedLeagueViewProtocol{
         self.leagueTeamsList = list!
         self.leagueTeams.reloadData()
     }
+    
+    func updateTheFavState(){
+        favButton.isSelected = true
+    }
+    
 }
 
 
@@ -102,6 +140,43 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
     @objc func tapFunction(sender:UITapGestureRecognizer) {
         print("tap working")
         // request the list of sports
+        
+        if Reachability.isConnectedToNetwork(){
+            // request the list of sports
+            
+            myPresenter = SelectedLeaguePresenter(selectedLeagueView:self , repo : Repo.getRepoInstance(netowrk: NetworkService.networkServiceIntanace, coreData: CoreDataService.coreDataServiceIntanace))
+            // request the data
+            
+            
+            let image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
+            let imageFilled = UIImage(named: "full_heart")?.withRenderingMode(.alwaysTemplate)
+            //imageFilled?.withTintColor(.red)
+            favButton.setImage(image, for: .normal)
+            favButton.setImage(imageFilled, for: .selected)
+             
+            
+            // request the league image
+            let myUrl = Foundation.URL.init(string: self.leagueImageUrl!)
+            let resource = ImageResource(downloadURL: myUrl!)
+            KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
+                switch result {
+                case .success(let value):
+                    self.leagueImage.image = value.image
+                case .failure( _):
+                    self.leagueImage.image = UIImage(named:"sports.jpeg")
+                }
+            }
+            
+            print(leagueId)
+            // request the league events
+            myPresenter?.getLeagueEvents(link: "eventsseason.php", params: ["id":self.leagueId!])
+            // request the league teams
+            myPresenter?.getLeagueTeams(link: "search_all_teams.php", params: ["l":self.leagueNameString!])
+            // set the object and check for this in core data
+            //myPresenter?.checkForLeagueInCoreData(league: currentLeague!)
+        }
+        
+        
     }
     
     func setEmptyMessage(_ message: String , collectionV : UICollectionView) {
@@ -282,7 +357,7 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
         
         if collectionView == self.leagueTeams{
             // switch to the team details
-            print(leagueTeamsList[indexPath.row].strTeam!)
+            //print(leagueTeamsList[indexPath.row].strTeam!)
             //let teamDetailsVC = self.storyboard?.instantiateViewController(identifier: "TeamDetails") as! LeaguesViewController
             //teamDetailsVC.team = leagueTeamsList[indexPath.row]
             //self.present(teamDetailsVC, animated: true, completion: nil)

@@ -11,4 +11,5 @@ import Foundation
 protocol SelectedLeagueViewProtocol {
     func refreshEventsList(list: [EventsDetails]?)
     func refreshTeamsList(list: [TeamDetails]?)
+    func updateTheFavState()
 }
