@@ -111,7 +111,7 @@
                                                     <rect key="frame" x="5" y="5" width="384" height="96"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apple" translatesAutoresizingMaskIntoConstraints="NO" id="NQQ-NI-LFf">
-                                                            <rect key="frame" x="8" y="14" width="75" height="75.000000000000057"/>
+                                                            <rect key="frame" x="8" y="14" width="75" height="75"/>
                                                             <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premiere League" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIt-iz-uZc">
@@ -190,7 +190,7 @@
         <!--League Details-->
         <scene sceneID="CQQ-Ci-eKm">
             <objects>
-                <viewController storyboardIdentifier="LeagueDetails" id="0cp-DH-D2m" customClass="SelectedLeagueViewController" customModule="Sports_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LeagueDetails" wantsFullScreenLayout="YES" id="0cp-DH-D2m" customClass="SelectedLeagueViewController" customModule="Sports_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kep-SB-une">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -451,7 +451,7 @@
         <!--Team Details View Controller-->
         <scene sceneID="qhd-fG-rWb">
             <objects>
-                <viewController storyboardIdentifier="TeamDetails" id="vqA-N0-TXA" customClass="TeamDetailsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="teamdetails" id="vqA-N0-TXA" customClass="TeamDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hmd-l6-Blw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -629,8 +629,10 @@
                         <outlet property="stadiunNameDetailLabel" destination="p8j-ag-oww" id="oRK-H0-5jm"/>
                         <outlet property="teamCountryLabel" destination="a3s-Ws-2d5" id="njv-V4-hLh"/>
                         <outlet property="teamFormedYear" destination="zPb-6J-i6q" id="Fz7-Zp-iyY"/>
+                        <outlet property="teamFormedYearLabel" destination="zPb-6J-i6q" id="Qoy-Cg-04P"/>
                         <outlet property="teamImage" destination="gUH-Yn-DlM" id="Jbt-jr-s15"/>
                         <outlet property="teamName" destination="j32-2R-9qq" id="ric-m9-fog"/>
+                        <outlet property="teamNameLabel" destination="j32-2R-9qq" id="FhA-rJ-ehc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gMJ-wM-tX3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

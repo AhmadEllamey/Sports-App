@@ -23,26 +23,68 @@ class TeamDetailsViewController: UIViewController {
     @IBOutlet weak var stadiumCapacity: UILabel!
     
     
-    @IBAction func websiteBt(_ sender: UIButton) {
-    }
-    
-    @IBAction func youtubeBt(_ sender: UIButton) {
-    }
-    
-    @IBAction func facebookBt(_ sender: UIButton) {
-    }
-    
-    @IBAction func twitterBt(_ sender: UIButton) {
-    }
-    @IBAction func instagramBt(_ sender: UIButton) {
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        stadiumImage.kf.setImage(with: URL(string : team?.strStadiumThumb ?? ""), placeholder: UIImage(named:"defaultImage"))
+        
+        stadiumLabel.text = team?.strStadium
+        
+        teamImage.kf.setImage(with: URL(string: team?.strTeamBadge ?? ""), placeholder: UIImage(named: "defaultImage"))
+        
+        teamImage.layer.cornerRadius = teamImage.layer.frame.height/2
+        teamImage.layer.borderWidth = 1
+        teamImage.layer.masksToBounds = false
+        teamImage.layer.borderColor = UIColor.black.cgColor
+        teamImage.clipsToBounds = true
+        
+        teamNameLabel.text = team?.strTeam
+        teamFormedYearLabel.text = team?.intFormedYear
+        
+        teamCountryLabel.text = team?.strCountry
+        
+        stadiunNameDetailLabel.text = team?.strStadium
+        stadiumDescriptionLabel.text = team?.strStadiumDescription
+        stadiumCapacity.text = team?.intStadiumCapacity
     }
     
+    
+    @IBAction func websiteBt(_ sender: UIButton) {
+        let url = NSURL(string: "https://"+(team?.strWebsite)!)!
+        
+        openLink(link: url)
+    }
+    
+    @IBAction func youtubeBt(_ sender: UIButton) {
+        let url = NSURL(string: "https://"+(team?.strYoutube)!)!
+        
+        openLink(link: url)
+    }
+    
+    @IBAction func facebookBt(_ sender: UIButton) {
+        let url = NSURL(string: "https://"+(team?.strFacebook)!)!
+        
+        openLink(link: url)
+    }
+    
+    @IBAction func twitterBt(_ sender: UIButton) {
+        let url = NSURL(string: "https://"+(team?.strTwitter)!)!
+        
+        openLink(link: url)
+    }
+    @IBAction func instagramBt(_ sender: UIButton) {
+        let url = NSURL(string: "https://"+(team?.strInstagram)!)!
+        
+        openLink(link: url)
+    }
+    
+    func openLink(link: NSURL){
+        if UIApplication.shared.canOpenURL(link as! URL){
+            UIApplication.shared.open((link as? URL)!)
+        }
+    }
 
     /*
     // MARK: - Navigation

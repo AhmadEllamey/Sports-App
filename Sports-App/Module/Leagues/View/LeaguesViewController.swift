@@ -98,7 +98,7 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myLeagueTable.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeaguesCellController
         
-        cell.leagueImage.kf.setImage(with: URL(string : leagues[indexPath.row].strBadge ?? ""), placeholder: UIImage(named:"apple.png"))
+        cell.leagueImage.kf.setImage(with: URL(string : leagues[indexPath.row].strBadge ?? ""), placeholder: UIImage(named:"defaultImage"))
         cell.leagueName.text = leagues[indexPath.row].strLeague
  
         if leagues[indexPath.row].strYoutube == ""{
@@ -113,9 +113,6 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
             }
  
             let youtubeURL = NSURL(string: "https://"+self.leagues[indexPath.row].strYoutube!)
-            
-            //print(youtubeURL)
-            //print(self.leagues[indexPath.row].strYoutube!)
             
             if UIApplication.shared.canOpenURL(youtubeURL as! URL){
                 UIApplication.shared.open((youtubeURL as? URL)!)

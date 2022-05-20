@@ -356,13 +356,7 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == self.leagueTeams{
-            // switch to the team details
-            //print(leagueTeamsList[indexPath.row].strTeam!)
-            //let teamDetailsVC = self.storyboard?.instantiateViewController(identifier: "TeamDetails") as! LeaguesViewController
-            //teamDetailsVC.team = leagueTeamsList[indexPath.row]
-            //self.present(teamDetailsVC, animated: true, completion: nil)
-            
-            let teamDetailsVC = self.storyboard?.instantiateViewController(identifier: "TeamDetails") as! TeamDetailsViewController
+            let teamDetailsVC = self.storyboard?.instantiateViewController(identifier: "teamdetails") as! TeamDetailsViewController
             teamDetailsVC.team = leagueTeamsList[indexPath.row]
             self.present(teamDetailsVC, animated: true, completion: nil)
         }
