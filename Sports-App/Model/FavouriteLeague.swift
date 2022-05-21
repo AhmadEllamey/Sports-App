@@ -9,7 +9,7 @@
 import Foundation
 
 struct FavouriteLeague{
-    let image: NSData?
+    let image: Data?
     let name: String?
     let ytLink: String?
     let id: String?

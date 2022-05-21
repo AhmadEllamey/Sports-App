@@ -32,17 +32,20 @@ class SelectedLeagueViewController: UIViewController {
         if favButton.isSelected {
             print("liked")
             // set the object add to fav
-            let imageData: NSData =  leagueImage.image!.pngData() as! NSData
+            let imageData: Data =  leagueImage.image!.pngData() as! Data
             let currentLeague = FavouriteLeague(image: imageData, name: leagueNameString, ytLink: yLink, id: leagueId, imageUrl: leagueImageUrl)
             myPresenter?.insertFavLeagueToCoreData(league: currentLeague)
         }else{
             print("disliked")
             // set the object remove from fav
-            let imageData: NSData =  leagueImage.image!.pngData() as! NSData
-                       let currentLeague = FavouriteLeague(image: imageData, name: leagueNameString, ytLink: yLink, id: leagueId, imageUrl: leagueImageUrl)
+            let imageData: Data =  leagueImage.image!.pngData() as! Data
+                       
+            let currentLeague = FavouriteLeague(image: imageData, name: leagueNameString, ytLink: yLink, id: leagueId, imageUrl: leagueImageUrl)
+            
             myPresenter?.deleteFavLeagueFromCoreData(league: currentLeague)
         }
     }
+    
     var leagueUpcomingEventsList = [EventsDetails]()
     var leagueLatestEventsList = [EventsDetails]()
     var leagueTeamsList = [TeamDetails]()
@@ -88,7 +91,6 @@ class SelectedLeagueViewController: UIViewController {
             favButton.setImage(image, for: .normal)
             favButton.setImage(imageFilled, for: .selected)
              
-            
             // request the league image
             let myUrl = Foundation.URL.init(string: self.leagueImageUrl!)
             let resource = ImageResource(downloadURL: myUrl!)

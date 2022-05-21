@@ -60,7 +60,7 @@ class CoreDataService: CoreDataProtocol {
                 let ytLink = returnedArray[i].value(forKey: "ytLink") as? String
                 let id = returnedArray[i].value(forKey: "id") as? String
                 let imageUrl = returnedArray[i].value(forKey: "imageUrl") as? String
-                let imageData = NSData(base64Encoded: image!)
+                let imageData = Data(base64Encoded: image!, options: .ignoreUnknownCharacters)
                 
                 let obj = FavouriteLeague(image: imageData!, name: name!, ytLink: ytLink!, id: id!, imageUrl: imageUrl!)
                 

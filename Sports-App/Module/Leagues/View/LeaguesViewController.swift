@@ -54,42 +54,7 @@ class LeaguesViewController: UIViewController {
 
 extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
     
-    
-    @objc func tapFunction(sender:UITapGestureRecognizer) {
-        print("tap working")
-        // request the list of sports
-         
-    }
-    
-    func setEmptyMessage(_ message: String) {
-        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
-        messageLabel.text = message
-        messageLabel.textColor = .black
-        messageLabel.numberOfLines = 0;
-        messageLabel.textAlignment = .center;
-        messageLabel.font = UIFont(name: "TrebuchetMS", size: 15)
-        messageLabel.sizeToFit()
-        messageLabel.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(SportsViewController.tapFunction))
-        messageLabel.addGestureRecognizer(tap)
-        self.myLeagueTable.backgroundView = messageLabel;
-    }
-    
-    func restore() {
-        self.myLeagueTable.backgroundView = nil
-    }
- 
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (self.leagues.count == 0) {
-            if !Reachability.isConnectedToNetwork(){
-                setEmptyMessage("No Internet Connection ... \n click to re-try")
-            }else {
-                setEmptyMessage("Loading Data ...")
-            }
-        } else {
-            restore()
-        }
         return leagues.count
     }
     

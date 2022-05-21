@@ -9,15 +9,26 @@
 import UIKit
 
 class CellTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var youtubeTapClosure: (()->())?
+    
+    @IBOutlet weak var youtubeBtOutlet: UIButton!
+    
+    @IBOutlet weak var leagueImage: UIImageView!
+    
+    @IBOutlet weak var leagueName: UILabel!
+    
+    @IBAction func youtubeBt(_ sender: Any) {
+        youtubeTapClosure?()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @IBOutlet weak var cellView: UIView!
+    
+    
+    func setVisibilityToFalse(){
+        youtubeBtOutlet.isHidden = true
+    }
+    
+    func setVisibilityToTrue(){
+        youtubeBtOutlet.isHidden = false
     }
 }

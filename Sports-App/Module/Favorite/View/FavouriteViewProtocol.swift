@@ -9,5 +9,6 @@
 import Foundation
 
 protocol FavouriteViewProtocol {
-    
+    func updateSuccess(leagues: [FavouriteLeague])
+    func updateFail()
 }

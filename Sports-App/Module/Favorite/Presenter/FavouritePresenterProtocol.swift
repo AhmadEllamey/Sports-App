@@ -10,6 +10,5 @@ import Foundation
 
 protocol FavouritePresenterProtocol {
     func getAllFavLeaguesFromCoreData()
-    func insertFavLeagueToCoreData(league: FavouriteLeague)
     func deleteFavLeagueFromCoreData(league: FavouriteLeague)
 }
