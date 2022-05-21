@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xXS-QJ-CzW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xXS-QJ-CzW">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +11,7 @@
         <!--Sports-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="SportsViewController" customModule="Sports_App" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainSportsScreen" id="BYZ-38-t0r" customClass="SportsViewController" customModule="Sports_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -451,7 +451,7 @@
         <!--Team Details View Controller-->
         <scene sceneID="qhd-fG-rWb">
             <objects>
-                <viewController storyboardIdentifier="teamdetails" id="vqA-N0-TXA" customClass="TeamDetailsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="teamdetails" id="vqA-N0-TXA" customClass="TeamDetailsViewController" customModule="Sports_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hmd-l6-Blw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -639,6 +639,21 @@
             </objects>
             <point key="canvasLocation" x="4307.2463768115949" y="-826.33928571428567"/>
         </scene>
+        <!--Selected Team View Controller-->
+        <scene sceneID="FdF-js-5vL">
+            <objects>
+                <viewController storyboardIdentifier="teamInfo" id="JKj-6a-7XS" customClass="SelectedTeamViewController" customModule="Sports_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KxU-aI-HdH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Clz-Vy-92f"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tNM-xJ-jvC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5076.811594202899" y="-828.34821428571422"/>
+        </scene>
         <!--Favorite-->
         <scene sceneID="DRf-LI-WgQ">
             <objects>
@@ -708,7 +723,6 @@
                                             <outlet property="leagueImage" destination="ogg-hW-MFH" id="BQA-Bj-hmZ"/>
                                             <outlet property="leagueName" destination="LHD-gN-Q2G" id="Odm-ds-c76"/>
                                             <outlet property="youtubeBtOutlet" destination="BLp-Bn-vvR" id="xVE-It-3Pl"/>
-                                            <segue destination="0cp-DH-D2m" kind="show" id="P5I-FG-q4U"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -738,7 +752,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="btU-9z-vpg">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="xXS-QJ-CzW" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mainScreen" automaticallyAdjustsScrollViewInsets="NO" id="xXS-QJ-CzW" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tQK-GN-zMP">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -757,7 +771,7 @@
         <!--Sports-->
         <scene sceneID="9Du-ef-9TE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iKQ-cR-xDC" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="sportsScreen" automaticallyAdjustsScrollViewInsets="NO" id="iKQ-cR-xDC" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Sports" id="f5g-Fy-Fep"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZIG-LB-nfn">

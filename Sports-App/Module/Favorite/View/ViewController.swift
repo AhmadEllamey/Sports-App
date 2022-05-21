@@ -96,10 +96,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         print(leagues[indexPath.row].imageUrl!)
+        print("'hello'")
         
         leagueDetailsVC = self.storyboard?.instantiateViewController(identifier: "LeagueDetails") as! SelectedLeagueViewController
         
         leagueDetailsVC?.leagueNameString = leagues[indexPath.row].name
+        print(leagues[indexPath.row].imageUrl!)
         leagueDetailsVC?.leagueImageUrl = leagues[indexPath.row].imageUrl
         leagueDetailsVC?.leagueId = leagues[indexPath.row].id
         leagueDetailsVC?.yLink = leagues[indexPath.row].ytLink

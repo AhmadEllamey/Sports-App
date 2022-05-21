@@ -59,6 +59,7 @@
 		EFF2E452282F6542002DFE0F /* SportsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF2E451282F6542002DFE0F /* SportsResponse.swift */; };
 		EFF2E454282F763F002DFE0F /* SportsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF2E453282F763F002DFE0F /* SportsProtocol.swift */; };
 		EFF2E456282F7C40002DFE0F /* SportsViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF2E455282F7C40002DFE0F /* SportsViewProtocol.swift */; };
+		EFF3DB9D2839816A001976DF /* SelectedTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF3DB9C2839816A001976DF /* SelectedTeamViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,7 @@
 		EFF2E451282F6542002DFE0F /* SportsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsResponse.swift; sourceTree = "<group>"; };
 		EFF2E453282F763F002DFE0F /* SportsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsProtocol.swift; sourceTree = "<group>"; };
 		EFF2E455282F7C40002DFE0F /* SportsViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsViewProtocol.swift; sourceTree = "<group>"; };
+		EFF3DB9C2839816A001976DF /* SelectedTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTeamViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				24F3B2B7283728E900F674BB /* TeamDetailsViewController.swift */,
+				EFF3DB9C2839816A001976DF /* SelectedTeamViewController.swift */,
 			);
 			path = TeamInfo;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				EFD5542B282D839B00AC82C9 /* SelectedLeagueViewController.swift in Sources */,
 				EFF2E442282F2EBF002DFE0F /* NeworkService.swift in Sources */,
 				24392DC928333C2D00DD2D7B /* FavouriteViewProtocol.swift in Sources */,
+				EFF3DB9D2839816A001976DF /* SelectedTeamViewController.swift in Sources */,
 				EFD55413282D6EAE00AC82C9 /* LeaguesViewController.swift in Sources */,
 				EFF2E439282F2CAB002DFE0F /* UpcomingEventsCellController.swift in Sources */,
 				24392DCD28333EAF00DD2D7B /* SelectedLeaguePresenter.swift in Sources */,

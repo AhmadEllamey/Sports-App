@@ -92,6 +92,7 @@ class SelectedLeagueViewController: UIViewController {
             favButton.setImage(imageFilled, for: .selected)
              
             // request the league image
+            print(self.leagueImageUrl!)
             let myUrl = Foundation.URL.init(string: self.leagueImageUrl!)
             let resource = ImageResource(downloadURL: myUrl!)
             KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
@@ -175,7 +176,8 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
             // request the league teams
             myPresenter?.getLeagueTeams(link: "search_all_teams.php", params: ["l":self.leagueNameString!])
             // set the object and check for this in core data
-            //myPresenter?.checkForLeagueInCoreData(league: currentLeague!)
+            let currentLeague = FavouriteLeague(image: nil, name: leagueNameString, ytLink: "", id: leagueId, imageUrl: "")
+            myPresenter?.checkForLeagueInCoreData(league: currentLeague)
         }
         
         
@@ -358,8 +360,14 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == self.leagueTeams{
-            let teamDetailsVC = self.storyboard?.instantiateViewController(identifier: "teamdetails") as! TeamDetailsViewController
-            teamDetailsVC.team = leagueTeamsList[indexPath.row]
+            let teamDetailsVC = self.storyboard?.instantiateViewController(identifier: "teamInfo")
+            as! SelectedTeamViewController
+            
+            // mainSportsScreen
+            // SportsViewController
+            
+            //teamdetails
+            //teamDetailsVC.team = leagueTeamsList[indexPath.row]
             self.present(teamDetailsVC, animated: true, completion: nil)
         }
         
