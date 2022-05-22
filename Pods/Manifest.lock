@@ -3,20 +3,24 @@ PODS:
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
+  - SwiftyGif (5.4.3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - Kingfisher (~> 5.0)
+  - SwiftyGif (~> 5.4.3)
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Kingfisher
+    - SwiftyGif
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  SwiftyGif: 6c3eafd0ce693cad58bb63d2b2fb9bacb8552780
 
-PODFILE CHECKSUM: 22e759bf466587b118e216ccff2f62fbf946944d
+PODFILE CHECKSUM: 6511a2dbcdc251b5d845bdea99b16a87ead22d29
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.11.3

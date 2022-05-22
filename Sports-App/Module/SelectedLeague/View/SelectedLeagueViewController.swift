@@ -367,7 +367,7 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
             // SportsViewController
             
             //teamdetails
-            //teamDetailsVC.team = leagueTeamsList[indexPath.row]
+            teamDetailsVC.team = leagueTeamsList[indexPath.row]
             self.present(teamDetailsVC, animated: true, completion: nil)
         }
         

@@ -82,7 +82,6 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
             if UIApplication.shared.canOpenURL(youtubeURL as! URL){
                 UIApplication.shared.open((youtubeURL as? URL)!)
             }
-            
         }
         
         cell.cellView.layer.cornerRadius = cell.cellView.frame.height/3

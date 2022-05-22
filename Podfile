@@ -17,7 +17,7 @@ target 'Sports-App' do
   end
 
   
-pod 'Kingfisher', '~> 5.0'
-
-pod 'Alamofire' , '~> 4.0'
+	pod 'Kingfisher', '~> 5.0'
+	pod 'Alamofire' , '~> 4.0'
+	pod 'SwiftyGif' , '~> 5.4.3'
 end
