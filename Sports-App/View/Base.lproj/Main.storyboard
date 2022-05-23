@@ -461,7 +461,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="co3-U2-QJ0">
-                                        <rect key="frame" x="0.0" y="8" width="431" height="298.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="319"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tJQ-0K-dHR">
                                         <rect key="frame" x="17" y="287" width="100" height="100"/>
@@ -486,7 +486,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Kl-tl-yKh">
-                                        <rect key="frame" x="147" y="275" width="247" height="21"/>
+                                        <rect key="frame" x="147" y="270.5" width="247" height="25.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="247" id="vPK-5l-SWo"/>
                                         </constraints>
@@ -602,14 +602,13 @@
                                     <constraint firstItem="9VX-hh-jai" firstAttribute="trailing" secondItem="7OR-fk-tmG" secondAttribute="trailing" id="0vk-pM-IA6"/>
                                     <constraint firstItem="ZYd-lD-8V0" firstAttribute="top" secondItem="9VX-hh-jai" secondAttribute="bottom" constant="23" id="6hZ-qv-gcH"/>
                                     <constraint firstItem="9VX-hh-jai" firstAttribute="trailing" secondItem="bHc-r4-S6t" secondAttribute="trailing" id="8GL-f5-VDL"/>
-                                    <constraint firstItem="co3-U2-QJ0" firstAttribute="top" secondItem="qMJ-5m-orL" secondAttribute="top" constant="8" id="8pz-tr-Mga"/>
+                                    <constraint firstItem="co3-U2-QJ0" firstAttribute="top" secondItem="qMJ-5m-orL" secondAttribute="top" id="8pz-tr-Mga"/>
                                     <constraint firstItem="bHc-r4-S6t" firstAttribute="leading" secondItem="EPR-Fr-pgN" secondAttribute="leading" constant="87" id="AWb-3l-4SQ"/>
                                     <constraint firstItem="azw-B4-cwq" firstAttribute="leading" secondItem="fff-er-xyY" secondAttribute="trailing" constant="8" id="Aib-34-4s7"/>
                                     <constraint firstItem="EPR-Fr-pgN" firstAttribute="bottom" secondItem="fff-er-xyY" secondAttribute="bottom" constant="51" id="C4L-MM-ZlN"/>
                                     <constraint firstItem="EPR-Fr-pgN" firstAttribute="bottom" secondItem="9Za-pi-s83" secondAttribute="bottom" constant="52" id="CBv-V6-5ch"/>
                                     <constraint firstItem="dFu-XP-blE" firstAttribute="leading" secondItem="16e-uI-NKA" secondAttribute="leading" id="CIA-C9-EKa"/>
                                     <constraint firstItem="4yk-LB-kGT" firstAttribute="leading" secondItem="EPR-Fr-pgN" secondAttribute="leading" constant="120" id="DSX-Bo-paE"/>
-                                    <constraint firstItem="5Kl-tl-yKh" firstAttribute="top" secondItem="EPR-Fr-pgN" secondAttribute="top" constant="231" id="EIt-gN-2AT"/>
                                     <constraint firstItem="9Za-pi-s83" firstAttribute="leading" secondItem="Aur-5S-wqr" secondAttribute="trailing" constant="12" id="H5t-pM-in0"/>
                                     <constraint firstItem="XbH-lI-Lck" firstAttribute="leading" secondItem="EPR-Fr-pgN" secondAttribute="leading" constant="58" id="Ip0-U1-fX8"/>
                                     <constraint firstItem="bHc-r4-S6t" firstAttribute="leading" secondItem="7OR-fk-tmG" secondAttribute="leading" id="KiR-bS-PJE"/>
@@ -629,7 +628,7 @@
                                     <constraint firstItem="dFu-XP-blE" firstAttribute="leading" secondItem="EPR-Fr-pgN" secondAttribute="leading" constant="36" id="cZZ-iB-S8S"/>
                                     <constraint firstItem="tJQ-0K-dHR" firstAttribute="leading" secondItem="EPR-Fr-pgN" secondAttribute="leading" constant="17" id="dau-fz-T41"/>
                                     <constraint firstItem="9VX-hh-jai" firstAttribute="top" secondItem="ahE-R6-ThD" secondAttribute="bottom" constant="9" id="djx-Om-Cel"/>
-                                    <constraint firstItem="ahE-R6-ThD" firstAttribute="top" secondItem="co3-U2-QJ0" secondAttribute="bottom" constant="20.5" id="djz-bn-17m"/>
+                                    <constraint firstItem="ahE-R6-ThD" firstAttribute="top" secondItem="co3-U2-QJ0" secondAttribute="bottom" constant="8" id="djz-bn-17m"/>
                                     <constraint firstItem="bHc-r4-S6t" firstAttribute="leading" secondItem="T0H-aP-FFu" secondAttribute="leading" id="ecY-8W-1uq"/>
                                     <constraint firstItem="fff-er-xyY" firstAttribute="baseline" secondItem="Aur-5S-wqr" secondAttribute="baseline" id="gEF-oz-Mhw"/>
                                     <constraint firstItem="5Kl-tl-yKh" firstAttribute="leading" secondItem="9Za-pi-s83" secondAttribute="leading" constant="-89" id="gwl-fo-e8x"/>
@@ -645,7 +644,7 @@
                                     <constraint firstItem="9VX-hh-jai" firstAttribute="trailing" secondItem="5Kl-tl-yKh" secondAttribute="trailing" id="sJY-Pw-Bmv"/>
                                     <constraint firstItem="Aur-5S-wqr" firstAttribute="leading" secondItem="4yk-LB-kGT" secondAttribute="trailing" constant="8" id="sye-H3-lZw"/>
                                     <constraint firstItem="XbH-lI-Lck" firstAttribute="top" secondItem="qMJ-5m-orL" secondAttribute="top" constant="471" id="tyM-aH-Ydu"/>
-                                    <constraint firstAttribute="trailing" secondItem="co3-U2-QJ0" secondAttribute="trailing" constant="-17" id="v9r-FO-K3P"/>
+                                    <constraint firstAttribute="trailing" secondItem="co3-U2-QJ0" secondAttribute="trailing" id="v9r-FO-K3P"/>
                                     <constraint firstItem="tJQ-0K-dHR" firstAttribute="bottom" secondItem="9VX-hh-jai" secondAttribute="bottom" constant="9" id="yAJ-8c-iwf"/>
                                     <constraint firstItem="7OR-fk-tmG" firstAttribute="top" secondItem="XbH-lI-Lck" secondAttribute="bottom" constant="8" id="zCT-c6-HXI"/>
                                 </constraints>
@@ -653,9 +652,6 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="co3-U2-QJ0" firstAttribute="height" secondItem="qMJ-5m-orL" secondAttribute="height" multiplier="1:3" id="r7L-GS-9f8"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Clz-Vy-92f"/>
                     </view>
                     <connections>
@@ -672,7 +668,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tNM-xJ-jvC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2770" y="-170"/>
+            <point key="canvasLocation" x="2769.5652173913045" y="-170.08928571428569"/>
         </scene>
         <!--Favorite-->
         <scene sceneID="DRf-LI-WgQ">

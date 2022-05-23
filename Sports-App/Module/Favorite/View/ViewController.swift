@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var myFavTable: UITableView!
     
     var leagues: [FavouriteLeague] = []
-
+    
     var leagueDetailsVC : SelectedLeagueViewController?
     var myPresenter : FavouritePresenterProtocol?
     
@@ -28,7 +28,6 @@ class ViewController: UIViewController {
         
         
         myPresenter = FavouritePresenter(favouriteView:self ,repo: Repo.getRepoInstance(netowrk: NetworkService.networkServiceIntanace, coreData: CoreDataService.coreDataServiceIntanace))
-    
     }
     
     override func viewWillAppear(_ animated: Bool){
@@ -89,27 +88,29 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             myPresenter?.deleteFavLeagueFromCoreData(league: leagues[indexPath.row])
-            //leagues.remove(at: indexPath.row)
-            //tableView.deleteRows(at: [indexPath], with: .fade)
+            
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print(leagues[indexPath.row].imageUrl!)
-        print("'hello'")
-        
-        leagueDetailsVC = self.storyboard?.instantiateViewController(identifier: "LeagueDetails") as! SelectedLeagueViewController
-        
-        leagueDetailsVC?.leagueNameString = leagues[indexPath.row].name
-        print(leagues[indexPath.row].imageUrl!)
-        leagueDetailsVC?.leagueImageUrl = leagues[indexPath.row].imageUrl
-        leagueDetailsVC?.leagueId = leagues[indexPath.row].id
-        leagueDetailsVC?.yLink = leagues[indexPath.row].ytLink
-        
-        leagueDetailsVC?.modalPresentationStyle = .fullScreen
-        self.present(leagueDetailsVC!, animated: true, completion: nil)
-        
+        if Reachability.isConnectedToNetwork(){
+            leagueDetailsVC = self.storyboard?.instantiateViewController(identifier: "LeagueDetails") as! SelectedLeagueViewController
+            
+            leagueDetailsVC?.leagueNameString = leagues[indexPath.row].name
+            print(leagues[indexPath.row].imageUrl!)
+            leagueDetailsVC?.leagueImageUrl = leagues[indexPath.row].imageUrl
+            leagueDetailsVC?.leagueId = leagues[indexPath.row].id
+            leagueDetailsVC?.yLink = leagues[indexPath.row].ytLink
+            
+            leagueDetailsVC?.modalPresentationStyle = .fullScreen
+            self.present(leagueDetailsVC!, animated: true, completion: nil)
+        }else{
+            let alert = UIAlertController(title: "Connection Error", message: "Connect to the internet", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 
