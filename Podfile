@@ -18,6 +18,5 @@ target 'Sports-App' do
 
   
 	pod 'Kingfisher', '~> 5.0'
-	pod 'Alamofire' , '~> 4.0'
-	pod 'SwiftyGif' , '~> 5.4.3'
+	pod 'Alamofire', '~>5.0.0-beta6'
 end

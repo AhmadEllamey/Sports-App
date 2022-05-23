@@ -23,7 +23,6 @@ class SelectedTeamViewController: UIViewController {
     @IBOutlet weak var stadiumCapacity: UILabel!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -48,6 +47,16 @@ class SelectedTeamViewController: UIViewController {
         stadiunNameDetailLabel.text = team?.strStadium
         stadiumDescriptionLabel.text = team?.strStadiumDescription
         stadiumCapacity.text = team?.intStadiumCapacity
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftFunc(gesture:)))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+    }
+    
+    @objc func swipeLeftFunc(gesture: UISwipeGestureRecognizer){
+        if gesture.direction == .left{
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     

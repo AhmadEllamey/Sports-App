@@ -23,6 +23,9 @@ class ViewController: UIViewController {
         myFavTable.delegate = self
         myFavTable.dataSource = self
         
+        myFavTable.separatorStyle = .none
+        myFavTable.showsVerticalScrollIndicator = false
+        
         
         myPresenter = FavouritePresenter(favouriteView:self ,repo: Repo.getRepoInstance(netowrk: NetworkService.networkServiceIntanace, coreData: CoreDataService.coreDataServiceIntanace))
     
@@ -33,8 +36,6 @@ class ViewController: UIViewController {
         
         myPresenter?.getAllFavLeaguesFromCoreData()
     }
-    
-    
     
 }
 
@@ -106,7 +107,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         leagueDetailsVC?.leagueId = leagues[indexPath.row].id
         leagueDetailsVC?.yLink = leagues[indexPath.row].ytLink
         
-        
+        leagueDetailsVC?.modalPresentationStyle = .fullScreen
         self.present(leagueDetailsVC!, animated: true, completion: nil)
         
     }

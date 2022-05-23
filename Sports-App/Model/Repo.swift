@@ -26,11 +26,15 @@ class Repo: RepoProtocol {
         
         return repoInstanace!
     }
- 
-    func getApiAnswer(link : String , param : [String : String]? , complitionHandler: @escaping (Any?, Error?) -> Void ){
-        networkService?.getResultFromAPI(link: link, params: param ){ (sports , error) in
-            complitionHandler(sports,error)
+
+    func getApiAnswer<T: Decodable>(link: String , params: [String: String]? ,type: T.Type , complitionHandler: @escaping (T?, Error?) -> Void ){
+        networkService?.getResultFromAPI(link: link, params: params, type: type){
+            (data , error) in
+            complitionHandler(data,error)
         }
+//        networkService?.getResultFromAPI(link: link, params: param ){ (sports , error) in
+//            complitionHandler(sports,error)
+//        }
     }
     
     func getAllFavLeagueFromCoreData() -> [FavouriteLeague]{

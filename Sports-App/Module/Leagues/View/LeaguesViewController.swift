@@ -107,6 +107,7 @@ extension LeaguesViewController : UITableViewDelegate, UITableViewDataSource{
         leagueDetailsVC?.leagueId = leagues[indexPath.row].idLeague
         leagueDetailsVC?.yLink = leagues[indexPath.row].strYoutube
         
+        leagueDetailsVC?.modalPresentationStyle = .fullScreen
         
         self.present(leagueDetailsVC!, animated: true, completion: nil)
         
@@ -126,11 +127,11 @@ extension LeaguesViewController : UIPickerViewDelegate, UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return countries[row].nameEn
+        return countries[row].name_en
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        countryTextField.text = countries[row].nameEn
+        countryTextField.text = countries[row].name_en
         countryTextField.resignFirstResponder()
         
         indicator.startAnimating()

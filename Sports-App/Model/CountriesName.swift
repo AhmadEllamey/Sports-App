@@ -9,5 +9,5 @@
 import Foundation
 
 struct CountriesName : Codable{
-    let nameEn : String
+    let name_en : String
 }

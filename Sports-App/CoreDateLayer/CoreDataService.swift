@@ -82,6 +82,17 @@ class CoreDataService: CoreDataProtocol {
         }
         
         managedObjectContext.delete(object)
+        
+        do{
+            try managedObjectContext.save()
+            print("Delete Done")
+        }catch{
+            print(error.localizedDescription)
+            print("Delete Fail")
+            return 0
+        }
+
+        
         return 1
     }
     

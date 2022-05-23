@@ -27,13 +27,11 @@ class FavouritePresenter: FavouritePresenterProtocol {
     
     func deleteFavLeagueFromCoreData(league: FavouriteLeague){
         let result = repo?.deleteFavLeagueFromCoreData(league: league)
-        list = repo?.getAllFavLeagueFromCoreData() ?? []
-        favouriteView?.updateSuccess(leagues: list)
-//        if result == 1{
-//            let data = getAllFavLeaguesFromCoreData()
-//            favouriteView?.updateSuccess(leagues: list)
-//        }else{
-//            favouriteView?.updateFail()
-//        }
+    
+        
+        if result == 1{
+            list = repo?.getAllFavLeagueFromCoreData() ?? []
+            favouriteView?.updateSuccess(leagues: list)
+        }
     }
 }

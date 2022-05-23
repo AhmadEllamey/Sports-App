@@ -10,8 +10,7 @@ import Foundation
 
 
 protocol RepoProtocol {
-    func getApiAnswer(link : String , param : [String : String]? , complitionHandler: @escaping (Any?, Error?) -> Void )
-    
+    func getApiAnswer<T: Decodable>(link: String , params: [String: String]? ,type: T.Type ,complitionHandler: @escaping (T?, Error?) -> Void)
     func getAllFavLeagueFromCoreData() -> [FavouriteLeague]
     func insertFavLeagueToCoreData(league: FavouriteLeague) -> Int
     func deleteFavLeagueFromCoreData(league: FavouriteLeague) -> Int

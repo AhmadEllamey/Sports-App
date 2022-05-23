@@ -10,5 +10,5 @@ import Foundation
 
 
 protocol NetworkProtocol {
-    func getResultFromAPI(link : String , params : [String : String]? ,complitionHandler: @escaping (Any?, Error?) -> Void)
+    func getResultFromAPI<T: Decodable>(link: String , params: [String: String]? ,type: T.Type ,complitionHandler: @escaping (T?, Error?) -> Void)
 }

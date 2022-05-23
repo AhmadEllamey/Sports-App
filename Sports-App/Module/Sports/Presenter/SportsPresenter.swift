@@ -19,26 +19,10 @@ class SportsPresenter: SportsProtocol {
     }
     
     func getSports(link : String , params : [String : String]? ){
-        repoRef?.getApiAnswer(link: link, param: params){ (sports, error) in
+        repoRef?.getApiAnswer(link: link, params: params, type: SportsResponse.self){
+            (sports, error) in
             
-            guard let sports = sports else{
-                print("sports")
-                return
-            }
-            do{
-                let json = try JSONSerialization.data(withJSONObject: sports)
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let decodedT = try decoder.decode(SportsResponse.self, from: json)
-                print(decodedT.sports[0].idSport)
-                self.viewRef?.refreshSports(list: decodedT.sports)
-            }catch{
-                print(error)
-            }
+            self.viewRef?.refreshSports(list: sports!.sports)
         }
-        
     }
-    
-    
-    
 }

@@ -15,46 +15,21 @@ class NetworkService : NetworkProtocol  {
     
     private init(){}
     
-    func getResultFromAPI(link : String , params : [String : String]? ,complitionHandler: @escaping (Any?, Error?) -> Void){
+    func getResultFromAPI<T: Decodable>(link: String , params: [String: String]? ,type: T.Type ,complitionHandler: @escaping (T?, Error?) -> Void){
         
         let url = "https://www.thesportsdb.com/api/v1/json/2/" + link
         
-        Alamofire.request(url, method: .get , parameters: params).responseJSON{ (response) in
-            if let data = response.result.value{
-                complitionHandler(data , nil) 
+        AF.request(url, method: .get, parameters: params).responseDecodable(of: T.self){
+            (response) in
+            let data = response.result
+            switch data{
+                case .success(let result):
+                    complitionHandler(result , nil)
+                case . failure(let error):
+                    complitionHandler(nil, error)
             }
         }
     }
-    
-    /*
-     func getResultFromAPI<T:Decodable>(link : String , params : [String : String]?, type : T ,complitionHandler: @escaping ([T]?, Error?) -> Void){
-           
-           let url = "https://www.thesportsdb.com/api/v1/json/2/" + link
-           
-           
-           Alamofire.request(url, method: .get , parameters: params).responseJSON{ (response) in
-               
-               if let data = response.result.value{
-                   
-                   do {
-                       let json = try JSONSerialization.data(withJSONObject: data)
-                       let decoder = JSONDecoder()
-                       decoder.keyDecodingStrategy = .convertFromSnakeCase
-                       let decodedT = try decoder.decode([T].self, from: json)
-                       decodedT.forEach{print($0)}
-                       //complitionHandler(decodedT, nil)
-                       print(data)
-                   } catch {
-                       print(error)
-                   }
-                   
-               }
-               
-           }
-           
-           
-       }
- */
 }
 
 

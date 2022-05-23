@@ -61,8 +61,6 @@ class SelectedLeagueViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(myScrollView.contentSize)
-        // Do any additional setup after loading the view.
         leagueUpcomingEvents.delegate = self
         leagueUpcomingEvents.dataSource = self
         leagueLatestEvents.delegate = self
@@ -85,14 +83,13 @@ class SelectedLeagueViewController: UIViewController {
             // request the data
             
             
-            let image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
-            let imageFilled = UIImage(named: "full_heart")?.withRenderingMode(.alwaysTemplate)
+            let image = UIImage(named: "heart_outline")?.withRenderingMode(.alwaysOriginal)
+            let imageFilled = UIImage(named: "heart")?.withRenderingMode(.alwaysTemplate)
             //imageFilled?.withTintColor(.red)
             favButton.setImage(image, for: .normal)
             favButton.setImage(imageFilled, for: .selected)
              
             // request the league image
-            print(self.leagueImageUrl!)
             let myUrl = Foundation.URL.init(string: self.leagueImageUrl!)
             let resource = ImageResource(downloadURL: myUrl!)
             KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
@@ -112,6 +109,18 @@ class SelectedLeagueViewController: UIViewController {
             // set the object and check for this in core data
             let currentLeague = FavouriteLeague(image: nil, name: leagueNameString, ytLink: "", id: leagueId, imageUrl: "")
             myPresenter?.checkForLeagueInCoreData(league: currentLeague)
+            
+            
+            let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftFunc(gesture:)))
+            swipeLeft.direction = .left
+            self.view.addGestureRecognizer(swipeLeft)
+            
+        }
+    }
+    
+    @objc func swipeLeftFunc(gesture: UISwipeGestureRecognizer){
+        if gesture.direction == .left{
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }
@@ -367,6 +376,7 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
             // SportsViewController
             
             //teamdetails
+            teamDetailsVC.modalPresentationStyle = .fullScreen
             teamDetailsVC.team = leagueTeamsList[indexPath.row]
             self.present(teamDetailsVC, animated: true, completion: nil)
         }

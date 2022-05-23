@@ -34,43 +34,21 @@ class SelectedLeaguePresenter: SelectedLeaguePresenterProtocol{
     }
     
     func getLeagueEvents(link : String? , params : [String : String]? ){
-        repo?.getApiAnswer(link: link!, param: params){ (leaguesEvents, error) in
+        repo?.getApiAnswer(link: link!, params: params, type: SportsEvents.self){
+            (leaguesEvents, error) in
             
-            guard let leaguesEvents = leaguesEvents else{
-                print("---------------")
-                return
-            }
-            do{ 
-                let json = try JSONSerialization.data(withJSONObject: leaguesEvents)
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let decodedT = try decoder.decode(SportsEvents.self, from: json)
-                self.selectedLeagueView?.refreshEventsList(list: decodedT.events!)
-            }catch{
-                print(error)
-                print("***************")
-            }
+            self.selectedLeagueView?.refreshEventsList(list: leaguesEvents?.events!)
         }
+        
     }
     
     func getLeagueTeams(link : String? , params : [String : String]? ){
-        repo?.getApiAnswer(link: link!, param: params){ (teams, error) in
+        repo?.getApiAnswer(link: link!, params: params, type: Teams.self){
+            (teams, error) in
             
-            guard let teams = teams else{
-                return
-            }
-            do{ 
-                let json = try JSONSerialization.data(withJSONObject: teams)
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                let decodedT = try decoder.decode(Teams.self, from: json)
-                self.selectedLeagueView?.refreshTeamsList(list: decodedT.teams!)
-            }catch{
-                print(error)
-            }
+            self.selectedLeagueView?.refreshTeamsList(list: teams?.teams!)
         }
+        
     }
-    
-    
     
 }
