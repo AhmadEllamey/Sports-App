@@ -49,12 +49,12 @@ class SelectedTeamViewController: UIViewController {
         stadiumCapacity.text = team?.intStadiumCapacity
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftFunc(gesture:)))
-        swipeLeft.direction = .left
+        swipeLeft.direction = .right
         self.view.addGestureRecognizer(swipeLeft)
     }
     
     @objc func swipeLeftFunc(gesture: UISwipeGestureRecognizer){
-        if gesture.direction == .left{
+        if gesture.direction == .right{
             self.dismiss(animated: true, completion: nil)
         }
     }

@@ -45,7 +45,16 @@ class LeaguesViewController: UIViewController {
         
         myPresenter = LeaguesPresenter(leagueView:self ,repo: Repo.getRepoInstance(netowrk: NetworkService.networkServiceIntanace, coreData: CoreDataService.coreDataServiceIntanace))
         
-        myPresenter?.getAllCountries(link: "all_countries.php", params: nil)
+        if Reachability.isConnectedToNetwork(){
+            myPresenter?.getAllCountries(link: "all_countries.php", params: nil)
+        }else {
+            let alert = UIAlertController(title: "Connection Error", message: "Connect to the internet", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
     
  
@@ -134,14 +143,21 @@ extension LeaguesViewController : UIPickerViewDelegate, UIPickerViewDataSource{
         countryTextField.text = countries[row].name_en
         countryTextField.resignFirstResponder()
         
-        indicator.startAnimating()
+        
         
         if Reachability.isConnectedToNetwork() {
+                indicator.startAnimating()
                 myPresenter?.getLeaguesOfSportInCountry(link: "search_all_leagues.php", params: ["c":countryTextField.text ?? "" , "s":sport!])
                 
                 leagues = []
                 myLeagueTable.reloadData()
                 myLeagueTable.isHidden = true
+        }else {
+            let alert = UIAlertController(title: "Connection Error", message: "Connect to the internet", preferredStyle: UIAlertController.Style.alert)
+            
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+            
+            self.present(alert, animated: true, completion: nil)
         }
     }
 

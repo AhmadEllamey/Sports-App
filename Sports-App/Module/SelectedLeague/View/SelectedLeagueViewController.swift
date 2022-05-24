@@ -76,18 +76,17 @@ class SelectedLeagueViewController: UIViewController {
         
         self.leagueName.text = leagueNameString
         
+        let image = UIImage(named: "heart_outline")?.withRenderingMode(.alwaysOriginal)
+        let imageFilled = UIImage(named: "heart")?.withRenderingMode(.alwaysTemplate)
+        //imageFilled?.withTintColor(.red)
+        favButton.setImage(image, for: .normal)
+        favButton.setImage(imageFilled, for: .selected)
+        
         if Reachability.isConnectedToNetwork(){
             // request the list of sports
             
             myPresenter = SelectedLeaguePresenter(selectedLeagueView:self , repo : Repo.getRepoInstance(netowrk: NetworkService.networkServiceIntanace, coreData: CoreDataService.coreDataServiceIntanace))
             // request the data
-            
-            
-            let image = UIImage(named: "heart_outline")?.withRenderingMode(.alwaysOriginal)
-            let imageFilled = UIImage(named: "heart")?.withRenderingMode(.alwaysTemplate)
-            //imageFilled?.withTintColor(.red)
-            favButton.setImage(image, for: .normal)
-            favButton.setImage(imageFilled, for: .selected)
              
             // request the league image
             let myUrl = Foundation.URL.init(string: self.leagueImageUrl!)
@@ -111,18 +110,27 @@ class SelectedLeagueViewController: UIViewController {
             myPresenter?.checkForLeagueInCoreData(league: currentLeague)
             
             
-            let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftFunc(gesture:)))
-            swipeLeft.direction = .left
-            self.view.addGestureRecognizer(swipeLeft)
+            let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightFunc(gesture:)))
+            swipeRight.direction = .right
+            self.view.addGestureRecognizer(swipeRight)
             
         }
     }
     
-    @objc func swipeLeftFunc(gesture: UISwipeGestureRecognizer){
-        if gesture.direction == .left{
+//    @objc func swipeLeftFunc(gesture: UISwipeGestureRecognizer){
+//        if gesture.direction == .left{
+//            self.dismiss(animated: true, completion: nil)
+//        }
+//    }
+    
+    
+    @objc func swipeRightFunc(gesture: UISwipeGestureRecognizer){
+        if gesture.direction == .right{
             self.dismiss(animated: true, completion: nil)
         }
     }
+    
+    
 }
 
 extension SelectedLeagueViewController: SelectedLeagueViewProtocol{
@@ -158,15 +166,11 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
             
             myPresenter = SelectedLeaguePresenter(selectedLeagueView:self , repo : Repo.getRepoInstance(netowrk: NetworkService.networkServiceIntanace, coreData: CoreDataService.coreDataServiceIntanace))
             // request the data
-            
-            
-            let image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
-            let imageFilled = UIImage(named: "full_heart")?.withRenderingMode(.alwaysTemplate)
+            //let image = UIImage(named: "heart")?.withRenderingMode(.alwaysOriginal)
+            //let imageFilled = UIImage(named: "full_heart")?.withRenderingMode(.alwaysTemplate)
             //imageFilled?.withTintColor(.red)
-            favButton.setImage(image, for: .normal)
-            favButton.setImage(imageFilled, for: .selected)
-             
-            
+            //favButton.setImage(image, for: .normal)
+            //favButton.setImage(imageFilled, for: .selected)
             // request the league image
             let myUrl = Foundation.URL.init(string: self.leagueImageUrl!)
             let resource = ImageResource(downloadURL: myUrl!)
@@ -380,7 +384,6 @@ extension SelectedLeagueViewController : UICollectionViewDelegateFlowLayout ,UIC
             teamDetailsVC.team = leagueTeamsList[indexPath.row]
             self.present(teamDetailsVC, animated: true, completion: nil)
         }
-        
     }
     
      
